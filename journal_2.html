@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#F1F4F9" media="(prefers-color-scheme: light)">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="description" content="Inversion trading journal">
+    <title>Inversion trading journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+    (function() {
+        var t = null;
+        try { t = localStorage.getItem('elshanzen_theme'); } catch(e) {}
+        if (!t) {
+            t = (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+    })();
+    </script>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+        :root {
+            color-scheme: dark;
+            --bg: #0F172A;
+            --card: #1B2537;
+            --card-hover: #222E42;
+            --border: #2C3A50;
+            --border2: #3A4A63;
+            --text: #E2E8F0;
+            --sub: #7C8CA3;
+            --blue: #2979FF;
+            --blue-soft: #60A5FA;
+            --green: #00E676;
+            --red: #FF1744;
+            --purple: #7000FF;
+            --amber: #FF9100;
+            /* derived / semantic tokens (were hardcoded before) */
+            --purple-soft: #A78BFA;
+            --purple-soft2: #C4B5FD;
+            --session-name: #94A3B8;
+            --blue-deep: #1E5FDB;
+            --green-deep: #00B85C;
+            --green-press: #00C862;
+            --on-green: #06110A;
+            --on-blue: #FFFFFF;
+            --link: #3B82F6;
+            --logo-inner: #FFFFFF;
+            --logo-slate-a: #39414F;
+            --logo-slate-b: #1B2430;
+            --logo-navy-a: #24384E;
+            --logo-navy-b: #152536;
+            --logo-teal-a: #24CB9C;
+            --logo-teal-b: #0C9B78;
+            --track: #141D2E;
+            --grid-line: rgba(255,255,255,0.03);
+            --row-hover: rgba(255,255,255,0.04);
+            --glow1: rgba(41,121,255,0.12);
+            --glow2: rgba(112,0,255,0.09);
+            --tint-green: rgba(0,230,118,0.12);
+            --tint-red: rgba(255,23,68,0.12);
+            --tint-purple: rgba(167,139,250,0.12);
+            --tint-blue: rgba(41,121,255,0.12);
+            --tint-red-strong: rgba(255,23,68,0.20);
+            --cal-win-bd: rgba(0,230,118,0.28);
+            --cal-win-bg: rgba(0,230,118,0.06);
+            --cal-loss-bd: rgba(255,23,68,0.28);
+            --cal-loss-bg: rgba(255,23,68,0.06);
+            --card-shadow: 0 1px 0 rgba(255,255,255,0.03) inset, 0 8px 24px rgba(4,8,18,0.35);
+            --chart-line: #5E5CE6;
+            --chart-grid: #22304A;
+            --chart-axis: #64748B;
+            --chart-dot-stroke: #0F172A;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --radius: 12px;
+            --radius-sm: 8px;
+            --shadow-blue: rgba(41,121,255,0.35);
+            --shadow-blue-hi: rgba(41,121,255,0.45);
+            --shadow-green: rgba(0,230,118,0.28);
+            --focus-ring: rgba(41,121,255,0.18);
+            --ring-green: rgba(0,230,118,0.25);
+            --ring-red: rgba(255,23,68,0.25);
+            --pulse-a: rgba(0,230,118,0.55);
+            --pulse-b: rgba(0,230,118,0.50);
+            --pulse-0: rgba(0,230,118,0);
+            --on-purple: #0B0F17;
+            --ic-pdf: #E5484D;
+            --ic-word: #3B82F6;
+            --ic-excel: #22A06B;
+            --ic-ppt: #E06239;
+        }
+
+        html[data-theme="light"] {
+            color-scheme: light;
+            --bg: #F1F4F9;
+            --card: #FFFFFF;
+            --card-hover: #F7F9FC;
+            --border: #E2E8F0;
+            --border2: #CBD5E1;
+            --text: #0F172A;
+            --sub: #64748B;
+            --blue: #1D6FF2;
+            --blue-soft: #2563EB;
+            --green: #00A855;
+            --red: #E5103B;
+            --purple: #6D28D9;
+            --amber: #C2680A;
+            --purple-soft: #7C3AED;
+            --purple-soft2: #6D28D9;
+            --session-name: #475569;
+            --blue-deep: #1552C4;
+            --green-deep: #00874A;
+            --green-press: #00934F;
+            --on-green: #FFFFFF;
+            --on-blue: #FFFFFF;
+            --link: #1D6FF2;
+            --logo-inner: #FFFFFF;
+            --logo-slate-a: #39414F;
+            --logo-slate-b: #1B2430;
+            --logo-navy-a: #24384E;
+            --logo-navy-b: #152536;
+            --logo-teal-a: #24CB9C;
+            --logo-teal-b: #0C9B78;
+            --track: #E8EDF5;
+            --grid-line: rgba(15,23,42,0.05);
+            --row-hover: rgba(15,23,42,0.04);
+            --glow1: rgba(41,121,255,0.08);
+            --glow2: rgba(112,0,255,0.06);
+            --tint-green: rgba(0,168,85,0.12);
+            --tint-red: rgba(229,16,59,0.10);
+            --tint-purple: rgba(109,40,217,0.10);
+            --tint-blue: rgba(29,111,242,0.10);
+            --tint-red-strong: rgba(229,16,59,0.18);
+            --cal-win-bd: rgba(0,168,85,0.35);
+            --cal-win-bg: rgba(0,168,85,0.08);
+            --cal-loss-bd: rgba(229,16,59,0.30);
+            --cal-loss-bg: rgba(229,16,59,0.07);
+            --card-shadow: 0 1px 2px rgba(15,23,42,0.04), 0 6px 18px rgba(15,23,42,0.07);
+            --chart-line: #4F46E5;
+            --chart-grid: #E6EAF2;
+            --chart-axis: #94A3B8;
+            --chart-dot-stroke: #FFFFFF;
+            --shadow-blue: rgba(29,111,242,0.22);
+            --shadow-blue-hi: rgba(29,111,242,0.30);
+            --shadow-green: rgba(0,168,85,0.22);
+            --focus-ring: rgba(29,111,242,0.16);
+            --ring-green: rgba(0,168,85,0.28);
+            --ring-red: rgba(229,16,59,0.26);
+            --pulse-a: rgba(0,168,85,0.45);
+            --pulse-b: rgba(0,168,85,0.40);
+            --pulse-0: rgba(0,168,85,0);
+            --on-purple: #FFFFFF;
+            --ic-pdf: #D6353A;
+            --ic-word: #2B5FA8;
+            --ic-excel: #1D7044;
+            --ic-ppt: #C0421F;
+        }
+
+        html { -webkit-text-size-adjust: 100%; }
+        body {
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(ellipse 900px 500px at 12% -10%, var(--glow1), transparent 60%),
+                radial-gradient(ellipse 800px 480px at 100% 0%, var(--glow2), transparent 55%),
+                linear-gradient(var(--grid-line) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+            background-size: auto, auto, 34px 34px, 34px 34px;
+            background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+            color: var(--text); font-family: var(--sans); min-height: 100vh; overflow-x: hidden; padding: 16px;
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+        }
+
+        /* ===== LAYOUT ===== */
+        .container { max-width: 1120px; margin: 0 auto; }
+        .hidden { display: none !important; }
+        .view-fade { animation: viewFadeIn 0.35s ease; }
+        @keyframes viewFadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+        /* ===== THEME TOGGLE ===== */
+        .theme-btn {
+            width: 34px; height: 34px; -webkit-flex-shrink: 0; flex-shrink: 0;
+            display: -webkit-inline-flex; display: inline-flex;
+            -webkit-align-items: center; align-items: center;
+            -webkit-justify-content: center; justify-content: center;
+            background: var(--card); border: 1px solid var(--border2);
+            border-radius: var(--radius-sm); color: var(--sub);
+            font-size: 13px; cursor: pointer;
+            transition: color 0.18s, border-color 0.18s, background 0.18s;
+        }
+        .theme-btn:hover { color: var(--amber); border-color: var(--amber); background: var(--card-hover); }
+        .theme-btn:active { transform: scale(0.94); }
+        html[data-theme="light"] .theme-icon-dark { display: none; }
+        html[data-theme="dark"]  .theme-icon-light { display: none; }
+        :root:not([data-theme="light"]) .theme-icon-light { display: none; }
+
+        /* ===== HEADER ===== */
+        .header { display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; gap: 16px; padding-bottom: 20px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+        @media(min-width: 640px) { 
+            .header { -webkit-flex-direction: row; flex-direction: row; -webkit-align-items: center; align-items: center; -webkit-justify-content: space-between; justify-content: space-between; }
+            body { padding: 24px 32px; }
+        }
+
+        .logo-wrap { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 12px; }
+        .logo-icon { width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, var(--blue), var(--purple)); padding: 1.5px; -webkit-flex-shrink: 0; flex-shrink: 0; box-shadow: 0 4px 16px var(--shadow-blue); }
+        .logo-icon-inner { width: 100%; height: 100%; background: var(--logo-inner); border-radius: 10.5px; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; overflow: hidden; }
+        .logo-mark { width: 78%; height: 78%; display: block; }
+        .logo-title { font-size: 15px; font-weight: 800; letter-spacing: 0.01em; }
+        .logo-title span { color: var(--blue-soft); font-weight: 500; }
+        .logo-sub { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10px; color: var(--sub); margin-top: 3px; letter-spacing: 0.02em; }
+
+        /* ===== SESSION TICKER ===== */
+        .session-ticker { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 6px; }
+        .session-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border2); -webkit-flex-shrink: 0; flex-shrink: 0; }
+        .session-dot.live { background: var(--green); box-shadow: 0 0 0 0 var(--pulse-a); animation: sessionPulse 2s infinite; }
+        @keyframes sessionPulse { 0% { box-shadow: 0 0 0 0 var(--pulse-b); } 70% { box-shadow: 0 0 0 6px var(--pulse-0); } 100% { box-shadow: 0 0 0 0 var(--pulse-0); } }
+        .session-name { color: var(--session-name); }
+        .session-sep { color: var(--border2); }
+        .session-clock { color: var(--text); font-weight: 700; }
+
+        /* ===== TABS ===== */
+        .tabs { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 4px; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 4px; }
+        .tab-btn { padding: 8px 14px; border-radius: 9px; font-size: 11px; font-weight: 600; background: transparent; border: 1px solid transparent; color: var(--session-name); cursor: pointer; -webkit-transition: all 0.2s; transition: all 0.2s; font-family: var(--sans); outline: none; -webkit-appearance: none; appearance: none; }
+        .tab-btn:hover { color: var(--text); }
+        .tab-btn:active { opacity: 0.8; }
+        .tab-btn.active { background: linear-gradient(135deg, var(--blue), var(--blue-deep)); border-color: var(--blue); color: var(--on-blue); box-shadow: 0 2px 10px var(--shadow-blue); }
+
+        .io-btn { padding: 6px 12px; font-size: 11px; font-family: var(--sans); font-weight: 600; background: var(--tint-blue); color: var(--blue-soft); border: 1px solid var(--border2); border-radius: var(--radius-sm); cursor: pointer; }
+        .io-btn:hover { border-color: var(--blue); color: var(--text); }
+        .edit-btn { background: transparent; border: none; color: var(--sub); cursor: pointer; font-size: 12px; padding: 4px 6px; }
+        .edit-btn:hover { color: var(--blue-soft); }
+        .edit-banner { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: space-between; justify-content: space-between; gap: 10px; -webkit-flex-wrap: wrap; flex-wrap: wrap; padding: 10px 14px; margin-bottom: 14px; border: 1px solid var(--blue); background: var(--tint-blue); border-radius: var(--radius-sm); font-family: var(--mono); font-size: 11px; color: var(--blue-soft); }
+        .edit-banner b { color: var(--text); font-weight: 700; }
+        .edit-cancel { background: transparent; border: 1px solid var(--border2); color: var(--sub); border-radius: 20px; padding: 5px 12px; font-family: var(--mono); font-size: 10px; cursor: pointer; }
+        .edit-cancel:hover { border-color: var(--red); color: var(--red); }
+
+        /* ===== LESSONS ===== */
+        .lessons-btn {
+            padding: 11px 22px; border-radius: 12px; font-size: 12px; font-weight: 700;
+            font-family: var(--sans); cursor: pointer; -webkit-flex-shrink: 0; flex-shrink: 0;
+            background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+            border: 1px solid var(--blue); color: #fff;
+            box-shadow: 0 4px 14px var(--shadow-blue);
+            transition: transform 0.15s, box-shadow 0.2s, opacity 0.2s;
+            outline: none; -webkit-appearance: none; appearance: none;
+        }
+        .lessons-btn:hover  { box-shadow: 0 6px 20px var(--shadow-blue-hi); transform: translateY(-1px); }
+        .lessons-btn:active { transform: translateY(0); opacity: 0.9; }
+        .lessons-btn.active { box-shadow: 0 0 0 3px var(--tint-blue), 0 4px 14px var(--shadow-blue); }
+
+        .lesson-add { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 10px; -webkit-align-items: flex-end; align-items: flex-end; }
+        .lesson-add .lf { -webkit-flex: 1 1 160px; flex: 1 1 160px; }
+        .lesson-add .lf.wide { -webkit-flex: 1 1 260px; flex: 1 1 260px; }
+        .lesson-add-btn { padding: 10px 18px; border-radius: var(--radius-sm); font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.04em; background: linear-gradient(135deg, var(--green), var(--green-deep)); color: var(--on-green); border: none; cursor: pointer; -webkit-flex-shrink: 0; flex-shrink: 0; }
+        .lesson-add-btn:hover { box-shadow: 0 6px 18px var(--shadow-green); }
+
+        .lesson-filters { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 6px; margin: 4px 0 16px; }
+        .lf-btn { padding: 6px 12px; border-radius: 20px; font-size: 10px; font-weight: 700; font-family: var(--mono); background: transparent; border: 1px solid var(--border2); color: var(--sub); cursor: pointer; transition: all 0.18s; }
+        .lf-btn:hover { color: var(--text); border-color: var(--blue); }
+        .lf-btn.active { background: var(--tint-blue); border-color: var(--blue); color: var(--blue-soft); }
+
+        .prog-wrap { margin-bottom: 18px; }
+        .prog-head { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; -webkit-align-items: center; align-items: center; margin-bottom: 8px; font-family: var(--mono); font-size: 10px; }
+        .prog-track { height: 8px; border-radius: 20px; background: var(--track); overflow: hidden; border: 1px solid var(--border); }
+        .prog-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--green)); transition: width 0.4s ease; }
+
+        .lesson-row { display: -webkit-flex; display: flex; -webkit-align-items: flex-start; align-items: flex-start; gap: 12px; padding: 13px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--card); margin-bottom: 8px; transition: border-color 0.18s, background 0.18s; }
+        .lesson-row:hover { border-color: var(--border2); background: var(--card-hover); }
+        .lesson-row.done { border-color: var(--cal-win-bd); background: var(--cal-win-bg); }
+        .lesson-check { width: 22px; height: 22px; -webkit-flex-shrink: 0; flex-shrink: 0; border-radius: 6px; border: 2px solid var(--border2); background: transparent; color: transparent; cursor: pointer; font-size: 10px; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; margin-top: 1px; transition: all 0.18s; }
+        .lesson-check:hover { border-color: var(--green); }
+        .lesson-check.on { background: var(--green); border-color: var(--green); color: var(--on-green); }
+        .lesson-main { -webkit-flex: 1 1 auto; flex: 1 1 auto; min-width: 0; }
+        .lesson-title { font-size: 12px; font-weight: 700; color: var(--text); word-break: break-word; }
+        .lesson-row.done .lesson-title { text-decoration: line-through; color: var(--sub); }
+        .lesson-meta { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; -webkit-align-items: center; align-items: center; gap: 8px; margin-top: 5px; font-family: var(--mono); font-size: 10px; color: var(--sub); }
+        .lesson-cat { padding: 2px 8px; border-radius: 20px; background: var(--tint-purple); color: var(--purple-soft); font-weight: 700; }
+        .lesson-note { margin-top: 7px; font-size: 11px; color: var(--sub); line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
+        .lesson-link { color: var(--link); text-decoration: none; }
+        .lesson-link:hover { text-decoration: underline; }
+        .lesson-del { background: transparent; border: none; color: var(--sub); cursor: pointer; font-size: 12px; padding: 4px; -webkit-flex-shrink: 0; flex-shrink: 0; }
+        .lesson-del:hover { color: var(--red); }
+        .lesson-empty { text-align: center; color: var(--sub); font-style: italic; font-family: var(--mono); font-size: 11px; padding: 30px 8px; }
+
+        /* ===== FILE ATTACHMENTS ===== */
+        .drop-zone { border: 1.5px dashed var(--border2); border-radius: var(--radius-sm); padding: 14px; text-align: center; cursor: pointer; transition: all 0.18s; background: transparent; }
+        .drop-zone:hover, .drop-zone.over { border-color: var(--blue); background: var(--tint-blue); }
+        .drop-zone-txt { font-family: var(--mono); font-size: 11px; color: var(--sub); }
+        .drop-zone-txt b { color: var(--blue-soft); font-weight: 700; }
+        .drop-zone-hint { font-family: var(--mono); font-size: 9px; color: var(--sub); margin-top: 4px; opacity: 0.8; }
+
+        .file-chips { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .file-chip { display: -webkit-inline-flex; display: inline-flex; -webkit-align-items: center; align-items: center; gap: 7px; max-width: 100%; padding: 5px 8px 5px 9px; border-radius: 20px; border: 1px solid var(--border2); background: var(--card); font-family: var(--mono); font-size: 10px; color: var(--text); }
+        .file-chip:hover { border-color: var(--blue); }
+        .file-chip i.fc-ico { font-size: 11px; -webkit-flex-shrink: 0; flex-shrink: 0; }
+        .file-chip .fc-name { cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 180px; }
+        .file-chip .fc-name:hover { color: var(--blue-soft); text-decoration: underline; }
+        .file-chip .fc-size { color: var(--sub); -webkit-flex-shrink: 0; flex-shrink: 0; }
+        .file-chip .fc-x { background: transparent; border: none; color: var(--sub); cursor: pointer; padding: 0 0 0 2px; font-size: 10px; -webkit-flex-shrink: 0; flex-shrink: 0; }
+        .file-chip .fc-x:hover { color: var(--red); }
+        .fc-pdf   { color: var(--ic-pdf); }
+        .fc-word  { color: var(--ic-word); }
+        .fc-excel { color: var(--ic-excel); }
+        .fc-ppt   { color: var(--ic-ppt); }
+        .fc-img   { color: var(--purple-soft); }
+        .fc-zip   { color: var(--amber); }
+        .fc-txt   { color: var(--sub); }
+        .fc-other { color: var(--sub); }
+
+        .lesson-addfile { background: transparent; border: 1px dashed var(--border2); color: var(--sub); border-radius: 20px; padding: 4px 10px; font-family: var(--mono); font-size: 10px; cursor: pointer; }
+        .lesson-addfile:hover { border-color: var(--blue); color: var(--blue-soft); }
+        .store-note { font-family: var(--mono); font-size: 9px; color: var(--sub); margin-top: 6px; }
+
+        /* ===== CARDS GRID ===== */
+        .grid-4 { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 14px; margin-bottom: 20px; }
+        .grid-4 .stat-card { -webkit-flex: 1 1 calc(50% - 7px); flex: 1 1 calc(50% - 7px); min-width: 130px; }
+        @media(min-width: 900px) { .grid-4 .stat-card { -webkit-flex: 1 1 calc(25% - 11px); flex: 1 1 calc(25% - 11px); } }
+
+        .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 16px; border-top-width: 2px; position: relative; overflow: hidden; transition: transform 0.2s, border-color 0.2s, background 0.2s; }
+        .stat-card::after { content: ''; position: absolute; top: -30px; right: -30px; width: 80px; height: 80px; border-radius: 50%; background: radial-gradient(circle, currentColor, transparent 70%); opacity: 0.06; pointer-events: none; }
+        .stat-card:hover { transform: translateY(-2px); background: var(--card-hover); }
+        .stat-card.glow-green { border-top-color: var(--green); color: var(--green); }
+        .stat-card.glow-red { border-top-color: var(--red); color: var(--red); }
+        .stat-card.glow-purple { border-top-color: var(--purple); color: var(--purple); }
+        .stat-card.glow-amber { border-top-color: var(--amber); color: var(--amber); }
+        .stat-card.glow-blue { border-top-color: var(--blue); color: var(--blue); }
+
+        .stat-card-head { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: space-between; justify-content: space-between; }
+        .stat-icon { font-size: 11px; opacity: 0.85; }
+        .stat-label { font-size: 10px; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--mono); }
+        .stat-value { font-size: 22px; font-weight: 800; margin-top: 6px; font-family: var(--mono); font-variant-numeric: tabular-nums; }
+        .stat-sub { font-size: 10px; color: var(--sub); margin-top: 4px; font-family: var(--mono); }
+        .color-green { color: var(--green); }
+        .color-red { color: var(--red); }
+        .color-text { color: var(--text); }
+        .color-blue { color: var(--blue); }
+        .color-purple { color: var(--purple-soft); }
+        .color-amber { color: var(--amber); }
+
+        /* ===== CARD BASE ===== */
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--card-shadow); }
+        .card-title { font-size: 10px; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--mono); margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+
+        /* ===== TWO COL ===== */
+        .row-2 { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 16px; margin-bottom: 20px; }
+        .col-8 { -webkit-flex: 1 1 320px; flex: 1 1 320px; }
+        .col-4 { -webkit-flex: 1 1 220px; flex: 1 1 220px; }
+        .col-5 { -webkit-flex: 1 1 260px; flex: 1 1 260px; }
+        .col-7 { -webkit-flex: 1 1 320px; flex: 1 1 320px; }
+
+        /* ===== EQUITY CHART ===== */
+        #equity-chart-container { height: 200px; background: var(--bg); border-radius: 8px; border: 1px solid var(--border); display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; overflow: hidden; position: relative; }
+        #equity-chart-container svg { width: 100%; height: 100%; display: block; }
+        .chart-empty { font-family: var(--mono); font-size: 11px; color: var(--sub); font-style: italic; }
+
+        /* ===== WIN/LOSS ===== */
+        .wl-bar-track { width: 100%; height: 8px; background: var(--bg); border-radius: 4px; overflow: hidden; display: -webkit-flex; display: flex; }
+        .wl-bar-win { background: var(--green); height: 100%; -webkit-transition: width 0.5s ease; transition: width 0.5s ease; }
+        .wl-bar-loss { background: var(--red); height: 100%; -webkit-transition: width 0.5s ease; transition: width 0.5s ease; }
+        .wl-labels { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; margin-top: 8px; font-size: 10px; font-weight: 700; font-family: var(--mono); }
+
+        /* ===== DONUT ===== */
+        .donut-wrap { display: -webkit-flex; display: flex; -webkit-justify-content: center; justify-content: center; -webkit-align-items: center; align-items: center; padding: 16px 0; }
+        .donut-outer { position: relative; width: 120px; height: 120px; }
+        .donut-ring { width: 100%; height: 100%; border-radius: 50%; -webkit-transition: background 0.4s ease; transition: background 0.4s ease; }
+        .donut-hole { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); width: 86px; height: 86px; background: var(--card); border-radius: 50%; display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; -webkit-justify-content: center; justify-content: center; }
+        .donut-pct { font-size: 15px; font-weight: 800; color: white; font-family: var(--mono); }
+
+        /* ===== PAIR BREAKDOWN ===== */
+        .pair-row { display: -webkit-flex; display: flex; -webkit-align-items: center; align-items: center; gap: 10px; padding: 6px 0; }
+        .pair-name { font-family: var(--mono); font-size: 11px; font-weight: 700; color: var(--text); width: 60px; -webkit-flex-shrink: 0; flex-shrink: 0; }
+        .pair-bar-track { -webkit-flex: 1; flex: 1; height: 6px; background: var(--bg); border-radius: 3px; overflow: hidden; }
+        .pair-bar-fill { height: 100%; border-radius: 3px; }
+        .pair-val { font-family: var(--mono); font-size: 11px; font-weight: 800; width: 56px; text-align: right; -webkit-flex-shrink: 0; flex-shrink: 0; }
+
+        /* ===== TABLE ===== */
+        .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        table { width: 100%; border-collapse: collapse; font-size: 11px; }
+        thead th { padding: 10px 8px; font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: 0.06em; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; position: sticky; top: 0; background: var(--card); z-index: 1; }
+        tbody tr { border-bottom: 1px solid var(--border); transition: background 0.15s; }
+        tbody td { padding: 10px 8px; font-family: var(--mono); color: var(--text); white-space: nowrap; }
+        tbody tr:hover { background: var(--row-hover); }
+        .badge { display: inline-flex; align-items: center; gap: 5px; padding: 3px 9px; border-radius: 20px; font-size: 10px; font-weight: 700; font-family: var(--mono); }
+        .badge::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+        .badge-win { background: var(--tint-green); color: var(--green); }
+        .badge-loss { background: var(--tint-red); color: var(--red); }
+        .badge-long { background: var(--tint-green); color: var(--green); }
+        .badge-short { background: var(--tint-red); color: var(--red); }
+        .empty-row td { text-align: center; color: var(--sub); font-style: italic; padding: 28px 8px; font-family: var(--mono); font-size: 11px; }
+
+        /* ===== FORM ===== */
+        .form-grid { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 14px; }
+        .form-group { -webkit-flex: 1 1 130px; flex: 1 1 130px; }
+        .form-group.full { -webkit-flex: 1 1 100%; flex: 1 1 100%; }
+        .form-label { display: block; font-size: 11px; color: var(--sub); font-weight: 500; margin-bottom: 6px; }
+        .form-input { width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 9px 12px; font-size: 12px; color: var(--text); font-family: var(--mono); outline: none; -webkit-appearance: none; appearance: none; -webkit-transition: border-color 0.2s, box-shadow 0.2s; transition: border-color 0.2s, box-shadow 0.2s; }
+        .form-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--focus-ring); }
+        select.form-input { cursor: pointer; }
+        textarea.form-input { resize: none; }
+
+        /* ===== DIR BTNS ===== */
+        .dir-grid { display: -webkit-flex; display: flex; gap: 8px; }
+        .dir-btn { -webkit-flex: 1; flex: 1; padding: 9px 4px; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; border-radius: var(--radius-sm); border: 1px solid var(--border); background: var(--bg); color: var(--sub); cursor: pointer; font-family: var(--mono); -webkit-transition: all 0.2s; transition: all 0.2s; -webkit-appearance: none; appearance: none; outline: none; }
+        .dir-btn:hover { border-color: var(--border2); color: var(--text); }
+        .dir-btn.long-active { border: 1px solid var(--green); color: var(--green); background: var(--tint-green); box-shadow: 0 0 0 1px var(--ring-green) inset; }
+        .dir-btn.short-active { border: 1px solid var(--red); color: var(--red); background: var(--tint-red); box-shadow: 0 0 0 1px var(--ring-red) inset; }
+
+        /* ===== PL INPUT ===== */
+        .pl-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; transition: border-color 0.2s; }
+        .pl-box:focus-within { border-color: var(--green); }
+        .pl-box label { display: block; font-size: 10px; color: var(--sub); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; font-family: var(--mono); }
+        .pl-input { width: 100%; background: transparent; border: none; font-family: var(--mono); font-size: 22px; font-weight: 800; color: var(--green); outline: none; -webkit-appearance: none; appearance: none; font-variant-numeric: tabular-nums; }
+        .rr-box { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px; }
+        .rr-label-row { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; -webkit-align-items: center; align-items: center; margin-bottom: 10px; }
+        .rr-label { font-size: 10px; color: var(--sub); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-family: var(--mono); }
+        .rr-val { font-size: 12px; font-weight: 700; font-family: var(--mono); background: var(--card); border: 1px solid var(--border); padding: 3px 8px; border-radius: 4px; color: var(--blue-soft); }
+        input[type=range] { width: 100%; accent-color: var(--blue); cursor: pointer; -webkit-appearance: none; appearance: none; height: 4px; background: var(--border); border-radius: 2px; outline: none; }
+        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--blue); cursor: pointer; box-shadow: 0 0 0 4px var(--focus-ring); }
+
+        /* ===== PSY BUTTONS ===== */
+        .psy-grid { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 6px; }
+        .psy-btn { -webkit-flex: 1 1 calc(20% - 5px); flex: 1 1 calc(20% - 5px); min-width: 52px; padding: 8px 4px; font-size: 10px; font-weight: 700; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--sub); cursor: pointer; font-family: var(--mono); -webkit-transition: all 0.15s; transition: all 0.15s; -webkit-appearance: none; appearance: none; outline: none; text-align: center; }
+        .psy-btn:hover { border-color: var(--border2); color: var(--text); }
+        .psy-btn.selected { background: linear-gradient(135deg, var(--blue), var(--blue-deep)); border-color: var(--blue); color: var(--on-blue); box-shadow: 0 2px 8px var(--shadow-blue); }
+
+        /* ===== SAVE BTN ===== */
+        .save-btn { width: 100%; padding: 14px; background: linear-gradient(135deg, var(--green), var(--green-deep)); color: var(--on-green); font-family: var(--mono); font-size: 12px; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; border: none; border-radius: var(--radius-sm); cursor: pointer; -webkit-transition: all 0.2s; transition: all 0.2s; -webkit-appearance: none; appearance: none; outline: none; margin-top: 16px; box-shadow: 0 4px 16px var(--shadow-green); }
+        .save-btn:hover { box-shadow: 0 6px 20px var(--shadow-green); transform: translateY(-1px); }
+        .save-btn:active { background: var(--green-press); transform: translateY(0); }
+
+        /* ===== CLEAR BTN ===== */
+        .clear-btn { padding: 6px 12px; font-size: 11px; background: var(--tint-red); color: var(--red); border: 1px solid var(--ring-red); border-radius: var(--radius-sm); cursor: pointer; font-family: var(--mono); font-weight: 600; -webkit-appearance: none; appearance: none; outline: none; transition: all 0.15s; }
+        .clear-btn:hover { background: var(--tint-red-strong); }
+        .clear-btn:active { background: var(--tint-red-strong); }
+
+        /* ===== VIEW ALL BTN ===== */
+        .view-all-btn { padding: 5px 12px; font-size: 11px; background: var(--border); border: 1px solid var(--border2); color: var(--text); border-radius: var(--radius-sm); cursor: pointer; font-family: var(--mono); font-weight: 500; -webkit-appearance: none; appearance: none; outline: none; transition: all 0.15s; }
+        .view-all-btn:hover { border-color: var(--blue); color: var(--blue-soft); }
+
+        /* ===== CALENDAR ===== */
+        .cal-header { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; -webkit-align-items: center; align-items: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .cal-nav { padding: 6px 10px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--sub); cursor: pointer; font-size: 11px; -webkit-appearance: none; appearance: none; outline: none; transition: all 0.15s; }
+        .cal-nav:hover { border-color: var(--blue); color: var(--blue-soft); }
+        .cal-nav:active { background: var(--border); }
+        .cal-month { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--blue-soft); min-width: 110px; text-align: center; }
+        .cal-days-header { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; margin-bottom: 6px; }
+        .cal-day-name { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--sub); padding: 4px 0; }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+        .cal-cell { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 6px; min-height: 52px; display: -webkit-flex; display: flex; -webkit-flex-direction: column; flex-direction: column; -webkit-justify-content: space-between; justify-content: space-between; transition: transform 0.15s, border-color 0.15s; }
+        .cal-cell:not(.empty):hover { transform: translateY(-1px); border-color: var(--border2); }
+        .cal-cell-num { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--sub); }
+        .cal-cell-pl { font-family: var(--mono); font-size: 10px; font-weight: 800; text-align: center; margin-top: 4px; }
+        .cal-cell.empty { background: transparent; border-color: transparent; }
+        .cal-cell.win-day { border-color: var(--cal-win-bd); background: var(--cal-win-bg); }
+        .cal-cell.loss-day { border-color: var(--cal-loss-bd); background: var(--cal-loss-bg); }
+
+        /* ===== SECTION HEADER ===== */
+        .section-header { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; -webkit-align-items: center; align-items: center; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .section-title { font-family: var(--mono); font-size: 10px; font-weight: 700; color: var(--sub); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* ===== DIVIDER ===== */
+        .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+        /* ===== MODEL INPUT ===== */
+        .model-box { background: var(--bg); border: 1px solid var(--blue); border-radius: var(--radius-sm); padding: 14px; }
+        .model-box label { font-size: 11px; font-weight: 700; color: var(--blue-soft); display: block; margin-bottom: 8px; }
+        .model-preset-grid { display: -webkit-flex; display: flex; flex-wrap: wrap; gap: 8px; }
+        .model-preset-btn { padding: 9px 12px; font-size: 10px; font-weight: 800; letter-spacing: 0.03em; border-radius: 6px; border: 1px solid var(--border); background: var(--panel, var(--bg)); color: var(--sub); cursor: pointer; font-family: var(--mono); transition: all 0.2s; appearance: none; outline: none; }
+        .model-preset-btn:hover { border-color: var(--blue); color: var(--blue-soft); }
+        .model-preset-btn.preset-active { border: 2px solid var(--blue); color: var(--blue-soft); }
+
+        /* ===== CONFIRMATION SEQUENCE ===== */
+        .confirm-grid { display: -webkit-flex; display: flex; flex-wrap: wrap; gap: 8px; }
+        .confirm-btn { position: relative; padding: 9px 12px 9px 26px; font-size: 10px; font-weight: 800; letter-spacing: 0.03em; border-radius: 6px; border: 1px solid var(--border); background: var(--panel, var(--bg)); color: var(--sub); cursor: pointer; font-family: var(--mono); transition: all 0.2s; appearance: none; outline: none; }
+        .confirm-btn:hover { border-color: var(--purple-soft); color: var(--purple-soft2); }
+        .confirm-btn.selected { border: 2px solid var(--purple-soft); color: var(--purple-soft2); background: var(--tint-purple); }
+        .confirm-num { position: absolute; left: 4px; top: 50%; transform: translateY(-50%); width: 15px; height: 15px; border-radius: 50%; background: var(--purple-soft); color: var(--on-purple); font-size: 9px; font-weight: 900; display: -webkit-flex; display: flex; align-items: center; justify-content: center; }
+        .entry-tf-btn { -webkit-flex: 1 1 calc(33.333% - 6px); flex: 1 1 calc(33.333% - 6px); padding: 9px 4px; font-size: 10px; font-weight: 800; border-radius: 6px; border: 1px solid var(--border); background: var(--panel, var(--bg)); color: var(--sub); cursor: pointer; font-family: var(--mono); transition: all 0.2s; appearance: none; outline: none; text-align: center; }
+        .entry-tf-btn:hover { border-color: var(--blue); color: var(--blue-soft); }
+        .entry-tf-btn.selected { border: 2px solid var(--blue); color: var(--blue-soft); background: var(--tint-blue); }
+        .tsmb-btn { width: 100%; padding: 9px 12px; font-size: 10px; font-weight: 800; letter-spacing: 0.03em; border-radius: 6px; border: 1px solid var(--border); background: var(--panel, var(--bg)); color: var(--sub); cursor: pointer; font-family: var(--mono); transition: all 0.2s; appearance: none; outline: none; }
+        .tsmb-btn.selected { border: 2px solid var(--green); color: var(--green); background: var(--tint-green); }
+        .confirm-summary { font-family: var(--mono); font-size: 10px; color: var(--sub); line-height: 1.6; padding: 8px 10px; background: var(--bg); border: 1px dashed var(--border); border-radius: 6px; }
+
+        /* ===== PL ROW ===== */
+        .pl-rr-row { display: -webkit-flex; display: flex; -webkit-flex-wrap: wrap; flex-wrap: wrap; gap: 12px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--border); }
+        .pl-rr-row > div { -webkit-flex: 1 1 160px; flex: 1 1 160px; }
+
+        /* ===== CHART LINK ===== */
+        .chart-icon { color: var(--link); font-size: 12px; }
+        .del-btn { background: none; border: none; color: var(--sub); cursor: pointer; font-size: 13px; padding: 4px; }
+        .del-btn:active { color: var(--red); }
+
+        /* ===== TRUNCATE ===== */
+        .trunc { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; vertical-align: middle; }
+
+        /* ===== SPACING ===== */
+        .mb-4 { margin-bottom: 16px; }
+        .mb-6 { margin-bottom: 24px; }
+        .space-y > * + * { margin-top: 16px; }
+        .mt-2 { margin-top: 8px; }
+        .mt-4 { margin-top: 16px; }
+
+        /* ===== PSY SECTION ===== */
+        .psy-row { margin-bottom: 16px; }
+        .psy-row-header { display: -webkit-flex; display: flex; -webkit-justify-content: space-between; justify-content: space-between; -webkit-align-items: center; align-items: center; margin-bottom: 8px; }
+        .psy-row-label { font-size: 12px; color: var(--sub); font-weight: 500; }
+        .psy-selected { font-size: 12px; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo-wrap">
+            <div class="logo-icon">
+                <div class="logo-icon-inner">
+                    <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-label="Inversion">
+                        <defs>
+                            <linearGradient id="inv-slate" x1="0" y1="0" x2="0.25" y2="1">
+                                <stop offset="0" style="stop-color:var(--logo-slate-a)"/>
+                                <stop offset="1" style="stop-color:var(--logo-slate-b)"/>
+                            </linearGradient>
+                            <linearGradient id="inv-navy" x1="0" y1="0" x2="0.2" y2="1">
+                                <stop offset="0" style="stop-color:var(--logo-navy-a)"/>
+                                <stop offset="1" style="stop-color:var(--logo-navy-b)"/>
+                            </linearGradient>
+                            <linearGradient id="inv-teal" x1="0.1" y1="0" x2="0" y2="1">
+                                <stop offset="0" style="stop-color:var(--logo-teal-a)"/>
+                                <stop offset="1" style="stop-color:var(--logo-teal-b)"/>
+                            </linearGradient>
+                        </defs>
+                        <path d="M7.4,16.6 L17.7,16.6 L22.8,51.6 L8.3,51.6 Z" fill="url(#inv-slate)"/>
+                        <path d="M24.7,41.1 L36.3,41.1 L35.9,57.6 L26.5,57.6 Z" fill="url(#inv-navy)"/>
+                        <path d="M43.8,6.4 L56.6,6.4 L56.2,52.3 L39.6,52.3 Z" fill="url(#inv-teal)"/>
+                    </svg>
+                </div>
+            </div>
+            <div>
+                <div class="logo-title">Inversion <span>trading journal</span></div>
+                <div class="logo-sub">
+                    <span>Sistemli və Rasional Qərar Mexanizmi</span>
+                    <span class="session-sep">•</span>
+                    <span class="session-ticker" id="session-ticker"><span class="session-dot" id="session-dot"></span><span class="session-name" id="session-name">-</span><span class="session-sep">/</span><span class="session-clock" id="session-clock">--:--</span></span>
+                </div>
+            </div>
+        </div>
+        <button class="lessons-btn" id="tab-lessons" onclick="switchTab('lessons')">Dərslər</button>
+        <div class="tabs">
+            <button class="tab-btn active" id="tab-dashboard" onclick="switchTab('dashboard')">Dashboard</button>
+            <button class="tab-btn" id="tab-trades" onclick="switchTab('trades')">Tradelər</button>
+            <button class="tab-btn" id="tab-calendar" onclick="switchTab('calendar')">Təqvim</button>
+            <button class="tab-btn" id="tab-journal" onclick="switchTab('journal')"><i class="fa-solid fa-plus" style="color:var(--green);margin-right:4px;"></i>Yeni Trade</button>
+            <button class="theme-btn" id="theme-btn" onclick="toggleTheme()" title="Tema" aria-label="Tema dəyiş">
+                <i class="fa-solid fa-sun theme-icon-dark"></i><i class="fa-solid fa-moon theme-icon-light"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="view-dashboard">
+        <!-- Stat Cards -->
+        <div class="grid-4" id="stat-cards">
+            <div class="stat-card glow-green" id="card-pl">
+                <div class="stat-card-head"><div class="stat-label">Ümumi P&L</div><i class="fa-solid fa-sack-dollar stat-icon"></i></div>
+                <div class="stat-value color-green" id="dash-pl">+$0.00</div>
+                <div class="stat-sub">USDT</div>
+            </div>
+            <div class="stat-card glow-green" id="card-wr">
+                <div class="stat-card-head"><div class="stat-label">Win Rate</div><i class="fa-solid fa-trophy stat-icon"></i></div>
+                <div class="stat-value color-green" id="dash-wr">0.0%</div>
+                <div class="stat-sub" id="dash-wr-sub">0W / 0L</div>
+            </div>
+            <div class="stat-card glow-purple">
+                <div class="stat-card-head"><div class="stat-label">Ortalama R:R</div><i class="fa-solid fa-chart-line stat-icon"></i></div>
+                <div class="stat-value color-purple" id="dash-rr">0.00R</div>
+                <div class="stat-sub">Hər trayd üçün</div>
+            </div>
+            <div class="stat-card glow-amber">
+                <div class="stat-card-head"><div class="stat-label">Ümumi Trade</div><i class="fa-solid fa-layer-group stat-icon"></i></div>
+                <div class="stat-value color-amber" id="dash-count">0</div>
+                <div class="stat-sub">qeydə alınmış</div>
+            </div>
+        </div>
+
+        <!-- Equity + Win/Loss -->
+        <div class="row-2 mb-4">
+            <div class="col-8 card">
+                <div style="display:-webkit-flex;display:flex;-webkit-justify-content:space-between;justify-content:space-between;-webkit-align-items:center;align-items:center;margin-bottom:14px;">
+                    <div class="card-title" style="margin-bottom:0;border-bottom:none;padding-bottom:0;">Equity Curve</div>
+                    <span style="font-family:var(--mono);font-size:10px;color:var(--sub);background:var(--bg);border:1px solid var(--border);padding:2px 8px;border-radius:4px;">Bütün dövr</span>
+                </div>
+                <div id="equity-chart-container">
+                    <span class="chart-empty">Hesab qrafiki üçün data gözlənilir...</span>
+                </div>
+            </div>
+            <div class="col-4 card">
+                <div class="card-title">Win / Loss</div>
+                <div class="wl-bar-track">
+                    <div class="wl-bar-win" id="bar-win" style="width:0%"></div>
+                    <div class="wl-bar-loss" id="bar-loss" style="width:0%"></div>
+                </div>
+                <div class="wl-labels">
+                    <span style="color:var(--green);" id="lbl-win-pct">0% Qazan</span>
+                    <span style="color:var(--red);" id="lbl-loss-pct">0% İtir</span>
+                </div>
+                <div class="donut-wrap">
+                    <div class="donut-outer">
+                        <div class="donut-ring" id="donut-ring" style="background:conic-gradient(var(--border) 0% 100%)"></div>
+                        <div class="donut-hole">
+                            <span class="donut-pct" id="donut-pct">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pair Breakdown + Recent Trades -->
+        <div class="row-2">
+            <div class="col-4 card">
+                <div class="card-title">Cüt üzrə P&L</div>
+                <div id="pair-breakdown">
+                    <p style="text-align:center;color:var(--sub);font-style:italic;font-family:var(--mono);font-size:11px;padding:16px 0;">Data yoxdur</p>
+                </div>
+            </div>
+            <div class="col-8 card">
+                <div class="section-header">
+                    <div class="section-title">Son Tradelər</div>
+                    <button class="view-all-btn" onclick="switchTab('trades')">Hamısına bax</button>
+                </div>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tarix</th><th>Cüt</th><th>Yön</th><th>P&L</th><th>R:R</th><th>Nəticə</th><th>Emosiya</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dash-recent-body">
+                            <tr class="empty-row"><td colspan="7">Hələ ki, əməliyyat daxil edilməyib.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TRADES VIEW -->
+    <div id="view-trades" class="card hidden">
+        <div class="section-header">
+            <div class="section-title">Bütün Əməliyyatlar</div>
+            <div style="display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;gap:6px;">
+                <button class="io-btn" onclick="exportBackup()"><i class="fa-solid fa-download" style="margin-right:5px;"></i>Backup</button>
+                <button class="io-btn" onclick="document.getElementById('inp-restore').click()"><i class="fa-solid fa-upload" style="margin-right:5px;"></i>Bərpa</button>
+                <button class="clear-btn" onclick="clearJournal()">Jurnalı Sıfırla</button>
+            </div>
+        </div>
+        <input type="file" id="inp-restore" accept=".json,application/json" style="display:none" onchange="importBackup(this)">
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tarix</th><th>Cüt</th><th>Hesab</th><th>Yön</th><th>Model</th><th>Təsdiqlər</th><th>P&L</th><th>R:R</th><th>Nəticə</th><th>Emosiya</th><th>Chart</th><th style="text-align:right">Düzəliş</th>
+                    </tr>
+                </thead>
+                <tbody id="all-trades-body">
+                    <tr class="empty-row"><td colspan="12">Hələ ki, əməliyyat daxil edilməyib.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- CALENDAR VIEW -->
+    <div id="view-calendar" class="card hidden">
+        <div class="cal-header">
+            <div class="section-title">Performans Təqvimi</div>
+            <div style="display:-webkit-flex;display:flex;-webkit-align-items:center;align-items:center;gap:10px;">
+                <button class="cal-nav" onclick="changeMonth(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <span class="cal-month" id="cal-month-label">...</span>
+                <button class="cal-nav" onclick="changeMonth(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+        <div class="cal-days-header">
+            <div class="cal-day-name">B.E.</div>
+            <div class="cal-day-name">Ç.A.</div>
+            <div class="cal-day-name">Ç.</div>
+            <div class="cal-day-name">C.A.</div>
+            <div class="cal-day-name">C.</div>
+            <div class="cal-day-name">Ş.</div>
+            <div class="cal-day-name">B.</div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+    </div>
+
+    <!-- LESSONS VIEW -->
+    <div id="view-lessons" class="hidden">
+        <div class="card" style="margin-bottom:16px;">
+            <div class="card-title">Yeni Dərs Əlavə Et</div>
+            <div class="lesson-add">
+                <div class="lf wide">
+                    <label class="form-label">Dərsin adı</label>
+                    <input type="text" id="les-title" class="form-input" placeholder="Məs: CRT strukturunun tanınması">
+                </div>
+                <div class="lf">
+                    <label class="form-label">Kateqoriya</label>
+                    <select id="les-cat" class="form-input">
+                        <option value="CRT">CRT</option>
+                        <option value="Key Level">Key Level</option>
+                        <option value="Supply / Demand">Supply / Demand</option>
+                        <option value="Risk Menecment">Risk Menecment</option>
+                        <option value="Psixologiya">Psixologiya</option>
+                        <option value="Backtest">Backtest</option>
+                        <option value="Digər">Digər</option>
+                    </select>
+                </div>
+                <div class="lf">
+                    <label class="form-label">Link (video / məqalə)</label>
+                    <input type="text" id="les-link" class="form-input" placeholder="https://...">
+                </div>
+                <button class="lesson-add-btn" onclick="addLesson()"><i class="fa-solid fa-plus" style="margin-right:6px;"></i>ƏLAVƏ ET</button>
+                <div class="lf wide" style="-webkit-flex:1 1 100%;flex:1 1 100%;">
+                    <label class="form-label">Qeydlər (istəyə bağlı)</label>
+                    <textarea id="les-note" rows="2" class="form-input" placeholder="Əsas fikirlər, tətbiq qaydaları..."></textarea>
+                </div>
+                <div class="lf wide" style="-webkit-flex:1 1 100%;flex:1 1 100%;">
+                    <label class="form-label">Sənədlər (Word, PDF, Excel, PowerPoint, şəkil...)</label>
+                    <div class="drop-zone" id="les-drop" onclick="document.getElementById('les-file').click()">
+                        <div class="drop-zone-txt"><i class="fa-solid fa-paperclip" style="margin-right:6px;"></i><b>Fayl seç</b> və ya buraya sürüşdür</div>
+                        <div class="drop-zone-hint" id="les-drop-hint">PDF · DOCX · XLSX · PPTX · TXT · ZIP · şəkil</div>
+                    </div>
+                    <input type="file" id="les-file" multiple style="display:none"
+                           accept=".pdf,.doc,.docx,.rtf,.odt,.xls,.xlsx,.csv,.ods,.ppt,.pptx,.odp,.txt,.md,.zip,.rar,.7z,.png,.jpg,.jpeg,.gif,.webp,.svg,.mp4,.mp3"
+                           onchange="stageFiles(this.files)">
+                    <div class="file-chips" id="les-staged"></div>
+                    <div class="store-note" id="les-store-note"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="section-header">
+                <div class="section-title">Dərslər</div>
+                <button class="clear-btn" onclick="clearLessons()">Hamısını Sil</button>
+            </div>
+
+            <div class="prog-wrap">
+                <div class="prog-head">
+                    <span style="color:var(--sub);text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">İrəliləyiş</span>
+                    <span id="les-prog-txt" style="color:var(--text);font-weight:700;">0 / 0 &middot; 0%</span>
+                </div>
+                <div class="prog-track"><div class="prog-fill" id="les-prog-fill" style="width:0%"></div></div>
+            </div>
+
+            <div class="lesson-filters" id="les-filters">
+                <button class="lf-btn active" data-f="all"    onclick="setLessonFilter('all')">Hamısı</button>
+                <button class="lf-btn"        data-f="todo"   onclick="setLessonFilter('todo')">Davam edir</button>
+                <button class="lf-btn"        data-f="done"   onclick="setLessonFilter('done')">Tamamlanmış</button>
+            </div>
+
+            <div id="lesson-list"></div>
+            <input type="file" id="les-file-existing" multiple style="display:none"
+                   accept=".pdf,.doc,.docx,.rtf,.odt,.xls,.xlsx,.csv,.ods,.ppt,.pptx,.odp,.txt,.md,.zip,.rar,.7z,.png,.jpg,.jpeg,.gif,.webp,.svg,.mp4,.mp3"
+                   onchange="attachToLesson(this.files)">
+        </div>
+    </div>
+
+    <!-- JOURNAL / NEW TRADE VIEW -->
+    <div id="view-journal" class="hidden">
+        <div class="edit-banner hidden" id="edit-banner">
+            <span><i class="fa-solid fa-pen-to-square" style="margin-right:6px;"></i>Redaktə rejimi — <b id="edit-banner-label">-</b></span>
+            <button class="edit-cancel" onclick="cancelEdit()">Ləğv et</button>
+        </div>
+        <div class="row-2">
+            <!-- LEFT: Trade Metrics + Model -->
+            <div class="col-7 space-y">
+                <div class="card">
+                    <div class="card-title">Trade Metrikləri</div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label">Tarix</label>
+                            <input type="date" id="inp-date" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Simvol (Asset)</label>
+                            <select id="inp-pair" class="form-input" onchange="onAssetChange()">
+                                <option value="XAUUSD">XAU/USD (Gold)</option>
+                                <option value="NQ">NQ (Nasdaq)</option>
+                                <option value="EURUSD">EUR/USD</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Yön (Direction)</label>
+                            <div class="dir-grid">
+                                <button class="dir-btn" id="btn-long" onclick="setDirection('LONG')">LONG</button>
+                                <button class="dir-btn" id="btn-short" onclick="setDirection('SHORT')">SHORT</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Setup Tipi</label>
+                            <select id="inp-setup" class="form-input">
+                                <option value="A+ Setup">A+ High Probability</option>
+                                <option value="A Setup">A Standard</option>
+                                <option value="B Setup">B Counter-Trend</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Hesab (Account)</label>
+                            <select id="inp-account" class="form-input" onchange="toggleCustomAccount(this.value)">
+                                <option value="Lucid 50K">Lucid 50K</option>
+                                <option value="MFF 50K">MFF 50K</option>
+                                <option value="FTMO 50K">FTMO 50K</option>
+                                <option value="CUSTOM">Özün Yaz (Custom)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Komissiya ($)</label>
+                            <input type="number" id="inp-fees" step="any" value="0.00" class="form-input">
+                        </div>
+                        <div class="form-group full hidden" id="custom-acc-wrap">
+                            <input type="text" id="inp-custom-acc" placeholder="Məs: MyProp 100K..." class="form-input" style="border-color:var(--blue);">
+                        </div>
+                    </div>
+
+                    <div class="pl-rr-row">
+                        <div class="pl-box">
+                            <label>Net P&L ($)</label>
+                            <input type="text" id="inp-pl" class="pl-input" value="0.00" oninput="onPLInput(this)">
+                        </div>
+                        <div class="rr-box">
+                            <div class="rr-label-row">
+                                <span class="rr-label">Risk / Reward (R)</span>
+                                <span class="rr-val" id="rr-display">0R</span>
+                            </div>
+                            <input type="range" id="inp-rr" min="-1" max="10" step="0.5" value="0" oninput="document.getElementById('rr-display').innerText = this.value + 'R'">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Giriş Modeli Seçimi</div>
+                    <div class="model-box">
+                        <label style="margin-bottom:10px;"><i class="fa-solid fa-list" style="margin-right:6px;"></i> Giriş Modeli</label>
+                        <div class="model-preset-grid" id="model-preset-grid"></div>
+                        <label style="margin-top:14px;"><i class="fa-solid fa-pen-to-square" style="margin-right:6px;"></i> Model Quruluşu daxil edin</label>
+                        <input type="text" id="inp-model" class="form-input" placeholder="Məsələn: 90m crt + sd + Key level...">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Təsdiqlər Ardıcıllığı</div>
+                    <div class="model-box" style="border-color:var(--border);">
+                        <label style="margin-bottom:10px;color:var(--purple-soft2);"><i class="fa-solid fa-list-ol" style="margin-right:6px;"></i> Təsdiqi aldıqca sırayla seç</label>
+                        <div class="confirm-grid" id="confirm-grid"></div>
+
+                        <label style="margin-top:14px;margin-bottom:10px;color:var(--blue-soft);"><i class="fa-solid fa-bullseye" style="margin-right:6px;"></i> Entry Timeframe</label>
+                        <div class="confirm-grid" id="entry-tf-grid"></div>
+
+                        <div style="margin-top:14px;" id="ts-mb-wrap">
+                            <button type="button" class="tsmb-btn" id="btn-ts-mb" onclick="toggleTsMb()"><i class="fa-solid fa-check" style="margin-right:6px;"></i>TS + MB</button>
+                        </div>
+
+                        <div class="confirm-summary" id="confirm-summary" style="margin-top:12px;">Hələ təsdiq seçilməyib</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT: Psychology + Analysis -->
+            <div class="col-5 space-y">
+                <div class="card">
+                    <div class="card-title">Psixologiya Modulu</div>
+                    <div class="psy-row">
+                        <div class="psy-row-header">
+                            <span class="psy-row-label">Trade Öncəsi Durum</span>
+                            <span class="psy-selected color-blue" id="psy-before-lbl">-</span>
+                        </div>
+                        <div class="psy-grid" id="psy-before-group">
+                            <button class="psy-btn" onclick="setPsy('before','FOMO')">FOMO</button>
+                            <button class="psy-btn" onclick="setPsy('before','Riskli')">Riskli</button>
+                            <button class="psy-btn" onclick="setPsy('before','Sakit')">Sakit</button>
+                            <button class="psy-btn" onclick="setPsy('before','Ehtiyatlı')">Ehtiyatlı</button>
+                            <button class="psy-btn" onclick="setPsy('before','Güvənli')">Güvənli</button>
+                        </div>
+                    </div>
+                    <div class="psy-row">
+                        <div class="psy-row-header">
+                            <span class="psy-row-label">Trade Sonrası Emosiya</span>
+                            <span class="psy-selected color-green" id="psy-after-lbl">-</span>
+                        </div>
+                        <div class="psy-grid" id="psy-after-group">
+                            <button class="psy-btn" onclick="setPsy('after','Peşman')">Peşman</button>
+                            <button class="psy-btn" onclick="setPsy('after','Əsəbi')">Əsəbi</button>
+                            <button class="psy-btn" onclick="setPsy('after','Nötr')">Nötr</button>
+                            <button class="psy-btn" onclick="setPsy('after','Qane edici')">Qane</button>
+                            <button class="psy-btn" onclick="setPsy('after','Mükəmməl')">Mükəmməl</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Strateji Analiz</div>
+                    <div class="space-y" style="margin-top:0;">
+                        <div>
+                            <label class="form-label">TradingView Chart Link</label>
+                            <input type="text" id="inp-chart" placeholder="https://tradingview.com/x/..." class="form-input">
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label">Qeydlər</label>
+                            <textarea id="inp-notes" rows="4" class="form-input" placeholder="Səbəblər, korrelyasiyalar..."></textarea>
+                        </div>
+                    </div>
+                    <button class="save-btn" id="save-btn" onclick="saveTrade()"><i class="fa-solid fa-floppy-disk" style="margin-right:8px;"></i><span id="save-btn-txt">JURNALA ƏLAVƏ ET</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    // === STATE ===
+    var db = [];
+    var direction = null;
+    var psyBefore = '';
+    var psyAfter  = '';
+    var confirmSeq = [];
+    var entryTF    = null;
+    var tsMb       = false;
+    var editingId  = null;
+    var calDate   = new Date();
+    var MONTHS    = ['Yanvar','Fevral','Mart','Aprel','May','İyun','İyul','Avqust','Sentyabr','Oktabr','Noyabr','Dekabr'];
+    var STORAGE_KEY  = 'elshanzen_pro_trades';
+    var LESSON_KEY   = 'inversion_lessons';
+    var lessons      = [];
+    var lessonFilter = 'all';
+
+    // === PER-ASSET SETUP CONFIG ===
+    // Each asset gets its own entry models, confirmation options and entry
+    // timeframes. Add a new key here to add a new asset.
+    var ASSET_CFG = {
+        XAUUSD: {
+            models:   ['4H CRT + Key Level + SD (1H)',
+                       '1H CRT + Key Level + SD (1H)'],
+            confirms: ['4H Key Level', '4H CRT', '1H CRT', '1H SD', 'SMTF'],
+            entryTF:  ['1M', '3M', '5M'],
+            tsMbBtn:  false
+        },
+        NQ: {
+            models:   ['1H Key Level + CRT + 15M CRT + TS + 1M Entry'],
+            confirms: ['1H Key Level', '1H CRT', '15M CRT', 'TS + Mitigation Block'],
+            entryTF:  ['1M', '3M', '5M'],
+            tsMbBtn:  false
+        },
+        EURUSD: {
+            models:   [],
+            confirms: [],
+            entryTF:  ['1M', '3M', '5M'],
+            tsMbBtn:  false
+        }
+    };
+    var FALLBACK_CFG = { models: [], confirms: [], entryTF: ['1M','3M','5M'], tsMbBtn: false };
+
+    function currentAsset() {
+        var el = document.getElementById('inp-pair');
+        return el ? el.value : 'XAUUSD';
+    }
+    function assetCfg() {
+        return ASSET_CFG[currentAsset()] || FALLBACK_CFG;
+    }
+
+    // === SESSION TICKER ===
+    function updateSessionTicker() {
+        var dotEl = document.getElementById('session-dot');
+        var nameEl = document.getElementById('session-name');
+        var clockEl = document.getElementById('session-clock');
+        if (!dotEl || !nameEl || !clockEl) return;
+        var now = new Date();
+        var h = now.getUTCHours();
+        var session = 'Asiya', hot = false;
+        if (h >= 7 && h < 12) { session = 'London'; hot = false; }
+        else if (h >= 12 && h < 16) { session = 'London/NY Overlap'; hot = true; }
+        else if (h >= 16 && h < 21) { session = 'Nyu-York'; hot = false; }
+        else { session = 'Asiya'; hot = false; }
+        dotEl.className = 'session-dot' + (hot ? ' live' : '');
+        nameEl.innerText = session;
+        var opts = { hour: '2-digit', minute: '2-digit', hour12: false, timeZone: 'Asia/Baku' };
+        try { clockEl.innerText = now.toLocaleTimeString('az-AZ', opts) + ' (Bakı)'; }
+        catch(e) { clockEl.innerText = String(now.getUTCHours()).padStart(2,'0') + ':' + String(now.getUTCMinutes()).padStart(2,'0') + ' UTC'; }
+    }
+    updateSessionTicker();
+    setInterval(updateSessionTicker, 30000);
+
+    // === LOAD ===
+    try {
+        var raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) db = JSON.parse(raw) || [];
+    } catch(e) { db = []; }
+
+    try {
+        var rawL = localStorage.getItem(LESSON_KEY);
+        if (rawL) lessons = JSON.parse(rawL) || [];
+    } catch(e) { lessons = []; }
+
+    // === INIT DATE ===
+    var today = new Date();
+    var yyyy  = today.getFullYear();
+    var mm    = String(today.getMonth() + 1).padStart(2, '0');
+    var dd    = String(today.getDate()).padStart(2, '0');
+    document.getElementById('inp-date').value = yyyy + '-' + mm + '-' + dd;
+
+    // === SAVE ===
+    function persist() {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(db)); } catch(e) {}
+    }
+
+    // === THEME ===
+    var THEME_KEY = 'elshanzen_theme';
+    window.toggleTheme = function() {
+        var cur  = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        var next = cur === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem(THEME_KEY, next); } catch(e) {}
+        // equity chart and donut bake colours into markup, so redraw them
+        renderAll();
+        if (typeof renderCalendar === 'function') renderCalendar();
+    };
+
+    // === TABS ===
+    var TABS = ['dashboard','trades','calendar','journal','lessons'];
+    window.switchTab = function(name) {
+        for (var i = 0; i < TABS.length; i++) {
+            var t = TABS[i];
+            var view = document.getElementById('view-' + t);
+            var btn  = document.getElementById('tab-' + t);
+            if (!view || !btn) continue;
+            if (t === name) {
+                view.classList.remove('hidden');
+                view.classList.remove('view-fade');
+                void view.offsetWidth;
+                view.classList.add('view-fade');
+                btn.classList.add('active');
+            } else {
+                view.classList.add('hidden');
+                btn.classList.remove('active');
+            }
+        }
+        if (name === 'calendar') renderCalendar();
+        if (name === 'lessons')  renderLessons();
+    };
+
+    // === DIRECTION ===
+    window.setDirection = function(dir) {
+        direction = dir;
+        var bl = document.getElementById('btn-long');
+        var bs = document.getElementById('btn-short');
+        if (dir === 'LONG') {
+            bl.className = 'dir-btn long-active';
+            bs.className = 'dir-btn';
+        } else {
+            bs.className = 'dir-btn short-active';
+            bl.className = 'dir-btn';
+        }
+    };
+
+    // === CUSTOM ACCOUNT ===
+    window.toggleCustomAccount = function(val) {
+        var wrap = document.getElementById('custom-acc-wrap');
+        if (val === 'CUSTOM') wrap.classList.remove('hidden');
+        else wrap.classList.add('hidden');
+    };
+
+    // === PL INPUT COLOR ===
+    window.onPLInput = function(el) {
+        var v = parseFloat(el.value);
+        if (isNaN(v) || v === 0) el.style.color = 'var(--text)';
+        else if (v < 0) el.style.color = 'var(--red)';
+        else el.style.color = 'var(--green)';
+    };
+
+    // === PSY ===
+    window.setPsy = function(type, value) {
+        psyBefore = type === 'before' ? value : psyBefore;
+        psyAfter  = type === 'after'  ? value : psyAfter;
+        var lbl = document.getElementById('psy-' + type + '-lbl');
+        if (lbl) lbl.innerText = value;
+        var group = document.getElementById('psy-' + type + '-group');
+        if (!group) return;
+        var btns = group.querySelectorAll('.psy-btn');
+        for (var i = 0; i < btns.length; i++) {
+            var txt = btns[i].innerText.trim();
+            var match = (txt === value) ||
+                        (txt === 'Qane' && value === 'Qane edici') ||
+                        (txt === 'Mükəmməl' && value === 'Mükəmməl');
+            btns[i].className = match ? 'psy-btn selected' : 'psy-btn';
+        }
+    };
+
+    // === MODEL PRESET SELECT ===
+    window.selectModelPreset = function(btn, text) {
+        document.getElementById('inp-model').value = text;
+        var wrap = btn.parentElement;
+        var btns = wrap.querySelectorAll('.model-preset-btn');
+        for (var i = 0; i < btns.length; i++) btns[i].className = 'model-preset-btn';
+        btn.className = 'model-preset-btn preset-active';
+    };
+
+    // === BUILD ASSET-SPECIFIC BUTTON GROUPS ===
+    var EMPTY_NOTE = '<p style="font-size:11px;font-family:var(--mono);color:var(--sub);'
+                   + 'font-style:italic;margin:2px 0;">Bu aktiv üçün seçim təyin edilməyib</p>';
+
+    function buildModelGrid() {
+        var cfg  = assetCfg();
+        var grid = document.getElementById('model-preset-grid');
+        if (!grid) return;
+        if (!cfg.models.length) { grid.innerHTML = EMPTY_NOTE; return; }
+        var html = '';
+        for (var i = 0; i < cfg.models.length; i++) {
+            var m = cfg.models[i].replace(/'/g, "\\'");
+            html += '<button type="button" class="model-preset-btn" onclick="selectModelPreset(this, \''
+                  + m + '\')">' + cfg.models[i] + '</button>';
+        }
+        grid.innerHTML = html;
+    }
+
+    function buildEntryTFGrid() {
+        var cfg  = assetCfg();
+        var grid = document.getElementById('entry-tf-grid');
+        if (!grid) return;
+        var html = '';
+        for (var i = 0; i < cfg.entryTF.length; i++) {
+            var k = cfg.entryTF[i];
+            var sel = (entryTF === k) ? ' selected' : '';
+            html += '<button type="button" class="entry-tf-btn' + sel + '" data-key="' + k
+                  + '" onclick="selectEntryTF(this)">' + k + '</button>';
+        }
+        grid.innerHTML = html;
+    }
+
+    // === CONFIRMATION SEQUENCE ===
+    function renderConfirmGrid() {
+        var cfg  = assetCfg();
+        var grid = document.getElementById('confirm-grid');
+        if (grid) {
+            if (!cfg.confirms.length) {
+                grid.innerHTML = EMPTY_NOTE;
+            } else {
+                var html = '';
+                for (var i = 0; i < cfg.confirms.length; i++) {
+                    var key   = cfg.confirms[i];
+                    var order = confirmSeq.indexOf(key);
+                    var esc   = key.replace(/"/g, '&quot;');
+                    if (order === -1) {
+                        html += '<button type="button" class="confirm-btn" data-key="' + esc
+                              + '" onclick="toggleConfirm(this)">' + key + '</button>';
+                    } else {
+                        html += '<button type="button" class="confirm-btn selected" data-key="' + esc
+                              + '" onclick="toggleConfirm(this)"><span class="confirm-num">'
+                              + (order + 1) + '</span>' + key + '</button>';
+                    }
+                }
+                grid.innerHTML = html;
+            }
+        }
+        var tsWrap = document.getElementById('ts-mb-wrap');
+        if (tsWrap) {
+            if (cfg.tsMbBtn) tsWrap.classList.remove('hidden');
+            else             tsWrap.classList.add('hidden');
+        }
+        updateConfirmSummary();
+    }
+
+    // Rebuild everything when the asset changes, dropping selections that
+    // belong to the previous asset.
+    window.onAssetChange = function() {
+        var cfg = assetCfg();
+        if (!cfg.tsMbBtn) tsMb = false;
+        var keep = [];
+        for (var i = 0; i < confirmSeq.length; i++) {
+            if (cfg.confirms.indexOf(confirmSeq[i]) !== -1) keep.push(confirmSeq[i]);
+        }
+        confirmSeq = keep;
+        if (entryTF && cfg.entryTF.indexOf(entryTF) === -1) entryTF = null;
+
+        var modelEl = document.getElementById('inp-model');
+        if (modelEl && cfg.models.indexOf(modelEl.value) === -1) {
+            var stillValid = false;
+            for (var k in ASSET_CFG) {
+                if (ASSET_CFG[k].models.indexOf(modelEl.value) !== -1) { stillValid = true; break; }
+            }
+            if (stillValid) modelEl.value = '';   // preset from the other asset -> clear
+        }
+
+        buildModelGrid();
+        buildEntryTFGrid();
+        renderConfirmGrid();
+        var tsBtn = document.getElementById('btn-ts-mb');
+        if (tsBtn) tsBtn.className = tsMb ? 'tsmb-btn selected' : 'tsmb-btn';
+    };
+
+    function updateConfirmSummary() {
+        var el = document.getElementById('confirm-summary');
+        if (!el) return;
+        var parts = [];
+        for (var i = 0; i < confirmSeq.length; i++) parts.push((i + 1) + '. ' + confirmSeq[i]);
+        var seqTxt = parts.length ? parts.join('  →  ') : 'Hələ təsdiq seçilməyib';
+        var extra = [];
+        if (entryTF) extra.push('Entry: ' + entryTF);
+        if (tsMb) extra.push('TS + MB ✓');
+        el.innerText = seqTxt + (extra.length ? '   |   ' + extra.join(' | ') : '');
+    }
+
+    window.toggleConfirm = function(btn) {
+        var key = btn.getAttribute('data-key');
+        var idx = confirmSeq.indexOf(key);
+        if (idx === -1) confirmSeq.push(key);
+        else confirmSeq.splice(idx, 1);
+        renderConfirmGrid();
+    };
+
+    window.selectEntryTF = function(btn) {
+        var key = btn.getAttribute('data-key');
+        entryTF = (entryTF === key) ? null : key;
+        buildEntryTFGrid();
+        updateConfirmSummary();
+    };
+
+    window.toggleTsMb = function() {
+        tsMb = !tsMb;
+        document.getElementById('btn-ts-mb').className = tsMb ? 'tsmb-btn selected' : 'tsmb-btn';
+        updateConfirmSummary();
+    };
+
+    function resetConfirmState() {
+        confirmSeq = [];
+        entryTF = null;
+        tsMb = false;
+        buildEntryTFGrid();
+        renderConfirmGrid();
+        var tsBtn = document.getElementById('btn-ts-mb');
+        if (tsBtn) tsBtn.className = 'tsmb-btn';
+    }
+
+    // === SAVE TRADE ===
+    // === EDIT / RESET ===
+    function resetTradeForm() {
+        editingId = null;
+        document.getElementById('edit-banner').classList.add('hidden');
+        document.getElementById('save-btn-txt').innerText = 'JURNALA ƏLAVƏ ET';
+
+        var pl = document.getElementById('inp-pl');
+        pl.value = '0.00';
+        pl.style.color = 'var(--green)';
+        document.getElementById('inp-rr').value = '0';
+        document.getElementById('rr-display').innerText = '0R';
+        document.getElementById('inp-fees').value = '0.00';
+        document.getElementById('inp-model').value = '';
+        document.getElementById('inp-chart').value = '';
+        document.getElementById('inp-notes').value = '';
+        document.getElementById('inp-account').value = 'Lucid 50K';
+        document.getElementById('inp-custom-acc').value = '';
+        document.getElementById('custom-acc-wrap').classList.add('hidden');
+        var today = new Date();
+        document.getElementById('inp-date').value = today.getFullYear() + '-' +
+            String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+
+        direction = null;
+        psyBefore = ''; psyAfter = '';
+        document.getElementById('btn-long').className  = 'dir-btn';
+        document.getElementById('btn-short').className = 'dir-btn';
+        document.getElementById('psy-before-lbl').innerText = '-';
+        document.getElementById('psy-after-lbl').innerText  = '-';
+        var allPsy = document.querySelectorAll('.psy-btn');
+        for (var i = 0; i < allPsy.length; i++) allPsy[i].className = 'psy-btn';
+
+        resetConfirmState();
+        buildModelGrid();
+    }
+
+    window.cancelEdit = function() {
+        resetTradeForm();
+        switchTab('trades');
+    };
+
+    window.editTrade = function(id) {
+        var t = null;
+        for (var i = 0; i < db.length; i++) if (db[i].id === id) t = db[i];
+        if (!t) return;
+
+        editingId = id;
+        document.getElementById('inp-date').value = t.date || '';
+
+        // asset first: the model / confirm / entry-TF grids depend on it
+        var pairEl = document.getElementById('inp-pair'), pairOK = false;
+        for (var p = 0; p < pairEl.options.length; p++) if (pairEl.options[p].value === t.pair) pairOK = true;
+        if (pairOK) pairEl.value = t.pair;
+
+        // account: fall back to the custom field for anything not in the list
+        var accEl = document.getElementById('inp-account'), accOK = false;
+        for (var a = 0; a < accEl.options.length; a++) if (accEl.options[a].value === t.account) accOK = true;
+        if (accOK) {
+            accEl.value = t.account;
+            toggleCustomAccount(t.account);
+        } else {
+            accEl.value = 'CUSTOM';
+            toggleCustomAccount('CUSTOM');
+            document.getElementById('inp-custom-acc').value = t.account || '';
+        }
+
+        if (t.setup) document.getElementById('inp-setup').value = t.setup;
+        document.getElementById('inp-fees').value = Number(t.fees || 0).toFixed(2);
+
+        var plEl = document.getElementById('inp-pl');
+        plEl.value = Number(t.pl || 0).toFixed(2);
+        onPLInput(plEl);
+
+        document.getElementById('inp-rr').value = t.rr || 0;
+        document.getElementById('rr-display').innerText = (t.rr || 0) + 'R';
+        document.getElementById('inp-model').value = t.model || '';
+        document.getElementById('inp-chart').value = (t.chart && t.chart !== '#') ? t.chart : '';
+        document.getElementById('inp-notes').value = t.notes || '';
+
+        if (t.direction) setDirection(t.direction);
+        if (t.psyBefore) setPsy('before', t.psyBefore);
+        if (t.psyAfter)  setPsy('after',  t.psyAfter);
+
+        // restore the sequence AFTER the asset is set, then rebuild the grids
+        confirmSeq = (t.confirmSeq || []).slice();
+        entryTF    = t.entryTF || null;
+        tsMb       = !!t.tsMb;
+        buildModelGrid();
+        buildEntryTFGrid();
+        renderConfirmGrid();
+        var tsBtn = document.getElementById('btn-ts-mb');
+        if (tsBtn) tsBtn.className = tsMb ? 'tsmb-btn selected' : 'tsmb-btn';
+
+        // highlight the matching preset, if the typed model is one
+        var pb = document.querySelectorAll('.model-preset-btn');
+        for (var k = 0; k < pb.length; k++) {
+            pb[k].className = (pb[k].innerText.trim() === (t.model || '').trim())
+                ? 'model-preset-btn preset-active' : 'model-preset-btn';
+        }
+
+        document.getElementById('edit-banner').classList.remove('hidden');
+        document.getElementById('edit-banner-label').innerText =
+            (t.date || '') + '  ·  ' + (t.pair || '') + '  ·  ' + (t.direction || '');
+        document.getElementById('save-btn-txt').innerText = 'DƏYİŞİKLİYİ YADDA SAXLA';
+        switchTab('journal');
+        window.scrollTo(0, 0);
+    };
+
+    window.saveTrade = function() {
+        var plVal  = parseFloat(document.getElementById('inp-pl').value) || 0;
+        var accVal = document.getElementById('inp-account').value;
+        if (accVal === 'CUSTOM') {
+            accVal = document.getElementById('inp-custom-acc').value.trim() || 'Xüsusi Prop';
+        }
+        var model = document.getElementById('inp-model').value.trim();
+        if (!direction) { alert('Zəhmət olmasa trade yönünü (LONG/SHORT) seçin!'); return; }
+        if (!model) { alert('Zəhmət olmasa Model Strukturunu daxil edin!'); return; }
+
+        var trade = {
+            id:        editingId != null ? editingId : Date.now(),
+            date:      document.getElementById('inp-date').value,
+            pair:      document.getElementById('inp-pair').value,
+            account:   accVal,
+            direction: direction,
+            pl:        plVal,
+            rr:        parseFloat(document.getElementById('inp-rr').value) || 0,
+            fees:      parseFloat(document.getElementById('inp-fees').value) || 0,
+            setup:     document.getElementById('inp-setup').value,
+            model:     model,
+            psyBefore: psyBefore || 'Sakit',
+            psyAfter:  psyAfter  || 'Nötr',
+            chart:     document.getElementById('inp-chart').value || '#',
+            notes:     document.getElementById('inp-notes').value,
+            confirmSeq: confirmSeq.slice(),
+            entryTF:   entryTF || '',
+            tsMb:      tsMb
+        };
+
+        var wasEdit = editingId != null;
+        if (wasEdit) {
+            for (var ei = 0; ei < db.length; ei++) {
+                if (db[ei].id === editingId) { db[ei] = trade; break; }
+            }
+        } else {
+            db.push(trade);
+        }
+        persist();
+        renderAll();
+        switchTab(wasEdit ? 'trades' : 'dashboard');
+
+        resetTradeForm();
+    };
+
+    // === DELETE ===
+    window.deleteTrade = function(id) {
+        if (!confirm('Bu əməliyyatı jurnaldan silmək istədiyinizə əminsiniz?')) return;
+        db = db.filter(function(t) { return t.id !== id; });
+        if (editingId === id) resetTradeForm();
+        persist();
+        renderAll();
+    };
+
+    // === CLEAR ===
+    window.clearJournal = function() {
+        if (!confirm('Bütün verilənləri tamamilə silmək istəyirsiniz?')) return;
+        db = [];
+        resetTradeForm();
+        persist();
+        renderAll();
+    };
+
+    // === RENDER ALL ===
+    function renderAll() {
+        var count    = db.length;
+        var totalPL  = 0, wins = 0, losses = 0, totalRR = 0;
+        var pairData = {};
+
+        var sorted = db.slice().sort(function(a,b) { return new Date(b.date) - new Date(a.date); });
+        var chrono  = db.slice().sort(function(a,b) { return new Date(a.date) - new Date(b.date); });
+
+        for (var i = 0; i < db.length; i++) {
+            var t = db[i];
+            totalPL += t.pl; totalRR += t.rr;
+            if (t.pl > 0) wins++;
+            else if (t.pl < 0) losses++;
+            pairData[t.pair] = (pairData[t.pair] || 0) + t.pl;
+        }
+
+        // --- Stat Cards ---
+        var plEl  = document.getElementById('dash-pl');
+        var wrEl  = document.getElementById('dash-wr');
+        var cardPL = document.getElementById('card-pl');
+        var cardWR = document.getElementById('card-wr');
+
+        var sign = totalPL >= 0 ? '+$' : '-$';
+        plEl.innerText = sign + Math.abs(totalPL).toFixed(2);
+        plEl.className = 'stat-value ' + (totalPL >= 0 ? 'color-green' : 'color-red');
+        cardPL.className = 'stat-card ' + (totalPL >= 0 ? 'glow-green' : 'glow-red');
+
+        var wr = count > 0 ? (wins / count * 100).toFixed(1) : '0.0';
+        wrEl.innerText = wr + '%';
+        wrEl.className = 'stat-value ' + (parseFloat(wr) >= 50 ? 'color-green' : 'color-red');
+        cardWR.className = 'stat-card ' + (parseFloat(wr) >= 50 ? 'glow-green' : 'glow-red');
+        document.getElementById('dash-wr-sub').innerText = wins + 'W / ' + losses + 'L';
+        document.getElementById('dash-rr').innerText = (count > 0 ? (totalRR/count).toFixed(2) : '0.00') + 'R';
+        document.getElementById('dash-count').innerText = count;
+
+        // --- Win/Loss Bar ---
+        var winPct  = count > 0 ? (wins / count * 100) : 0;
+        var lossPct = 100 - winPct;
+        document.getElementById('bar-win').style.width  = winPct + '%';
+        document.getElementById('bar-loss').style.width = lossPct + '%';
+        document.getElementById('lbl-win-pct').innerText  = Math.round(winPct) + '% Qazan';
+        document.getElementById('lbl-loss-pct').innerText = Math.round(lossPct) + '% İtir';
+        document.getElementById('donut-pct').innerText = Math.round(winPct) + '%';
+        if (count > 0) {
+            var dcs = getComputedStyle(document.documentElement);
+            var gCol = (dcs.getPropertyValue('--green') || '#00E676').trim();
+            var rCol = (dcs.getPropertyValue('--red')   || '#FF1744').trim();
+            document.getElementById('donut-ring').style.background =
+                'conic-gradient(' + gCol + ' 0% ' + winPct + '%, ' + rCol + ' ' + winPct + '% 100%)';
+        } else {
+            var eCol = (getComputedStyle(document.documentElement).getPropertyValue('--border') || '#1A1F2C').trim();
+            document.getElementById('donut-ring').style.background = 'conic-gradient(' + eCol + ' 0% 100%)';
+        }
+
+        // --- Equity Chart ---
+        var chartContainer = document.getElementById('equity-chart-container');
+        if (count === 0) {
+            chartContainer.innerHTML = '<span class="chart-empty">Hesab qrafiki üçün data gözlənilir...</span>';
+        } else {
+            var points = [], running = 0;
+            for (var j = 0; j < chrono.length; j++) { running += chrono[j].pl; points.push(running); }
+            var minP = Math.min.apply(null, points.concat([0]));
+            var maxP = Math.max.apply(null, points.concat([10]));
+            var range = (maxP - minP) || 1;
+            var cs      = getComputedStyle(document.documentElement);
+            var cLine   = (cs.getPropertyValue('--chart-line')       || '#5E5CE6').trim();
+            var cGrid   = (cs.getPropertyValue('--chart-grid')       || '#141923').trim();
+            var cAxis   = (cs.getPropertyValue('--chart-axis')       || '#4A5568').trim();
+            var cDotEdge= (cs.getPropertyValue('--chart-dot-stroke') || '#080A0E').trim();
+            var W = 680, H = 180, pX = 40, pY = 20;
+            var stepX = count > 1 ? (W - pX * 2) / (count - 1) : 0;
+            var coords = [];
+            var circles = '';
+            for (var k = 0; k < points.length; k++) {
+                var x = pX + k * stepX;
+                var y = H - (pY + ((points[k] - minP) / range) * (H - pY * 2));
+                coords.push(x + ',' + y);
+                circles += '<circle cx="' + x + '" cy="' + y + '" r="3.5" fill="' + cLine + '" stroke="' + cDotEdge + '" stroke-width="1.5"/>';
+            }
+            var gridLines = '';
+            for (var g = 0; g <= 4; g++) {
+                var gy = pY + (g / 4) * (H - pY * 2);
+                var vy = maxP - (g / 4) * range;
+                gridLines += '<line x1="' + pX + '" y1="' + gy + '" x2="' + (W-pX) + '" y2="' + gy + '" stroke="' + cGrid + '" stroke-width="1" stroke-dasharray="3,3"/>';
+                gridLines += '<text x="4" y="' + (gy+4) + '" fill="' + cAxis + '" font-size="9" font-family="monospace">' + (vy >= 0 ? '+' : '') + vy.toFixed(0) + '$</text>';
+            }
+            for (var m = 0; m < chrono.length; m++) {
+                var cx2 = pX + m * stepX;
+                gridLines += '<text x="' + (cx2-12) + '" y="' + (H-4) + '" fill="' + cAxis + '" font-size="9" font-family="monospace">' + chrono[m].date.substring(5) + '</text>';
+            }
+            var path = count === 1 ? ('M ' + pX + ',' + (H/2) + ' L ' + (W-pX) + ',' + (H/2)) : ('M ' + coords.join(' L '));
+            chartContainer.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMid meet">' + gridLines + '<path d="' + path + '" fill="none" stroke="' + cLine + '" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>' + circles + '</svg>';
+        }
+
+        // --- Pair Breakdown ---
+        var pairHtml = '';
+        var pairs = Object.keys(pairData);
+        for (var pi = 0; pi < pairs.length; pi++) {
+            var p = pairs[pi], v = pairData[p];
+            var isPos = v >= 0;
+            var barW = Math.min(Math.max(15, Math.abs(v) * 2), 100);
+            pairHtml += '<div class="pair-row">' +
+                '<span class="pair-name">' + p + '</span>' +
+                '<div class="pair-bar-track"><div class="pair-bar-fill" style="width:' + barW + '%;background:' + (isPos ? 'var(--blue)' : 'var(--red)') + ';"></div></div>' +
+                '<span class="pair-val ' + (isPos ? 'color-green' : 'color-red') + '">' + (isPos ? '+' : '') + v.toFixed(1) + '</span>' +
+                '</div>';
+        }
+        document.getElementById('pair-breakdown').innerHTML = pairHtml || '<p style="text-align:center;color:var(--sub);font-style:italic;font-family:var(--mono);font-size:11px;padding:16px 0;">Data yoxdur</p>';
+
+        // --- Recent Trades Table (Dashboard) ---
+        var recentHtml = '';
+        var limit = Math.min(5, sorted.length);
+        for (var ri = 0; ri < limit; ri++) {
+            var tr = sorted[ri];
+            var plColor  = tr.pl >= 0 ? 'color:var(--green)' : 'color:var(--red)';
+            var plSign   = tr.pl >= 0 ? '+' : '';
+            var badge    = tr.pl >= 0 ? '<span class="badge badge-win">Qazan</span>' : '<span class="badge badge-loss">İtir</span>';
+            var dirBadge = tr.direction === 'LONG' ? '<span class="badge badge-long">LONG</span>' : '<span class="badge badge-short">SHORT</span>';
+            recentHtml += '<tr>' +
+                '<td>' + tr.date + '</td>' +
+                '<td style="font-weight:700;color:white">' + tr.pair + '</td>' +
+                '<td>' + dirBadge + '</td>' +
+                '<td style="font-weight:700;' + plColor + '">' + plSign + tr.pl.toFixed(2) + '</td>' +
+                '<td style="color:var(--purple-soft)">' + tr.rr + 'R</td>' +
+                '<td>' + badge + '</td>' +
+                '<td style="color:var(--sub)">' + tr.psyAfter + '</td>' +
+                '</tr>';
+        }
+        document.getElementById('dash-recent-body').innerHTML = recentHtml || '<tr class="empty-row"><td colspan="7">Hələ ki, əməliyyat daxil edilməyib.</td></tr>';
+
+        // --- All Trades Table ---
+        var allHtml = '';
+        for (var ai = 0; ai < sorted.length; ai++) {
+            var at = sorted[ai];
+            var aColor  = at.pl >= 0 ? 'color:var(--green)' : 'color:var(--red)';
+            var aSign   = at.pl >= 0 ? '+' : '';
+            var aBadge  = at.pl >= 0 ? '<span class="badge badge-win">Qazan</span>' : '<span class="badge badge-loss">İtir</span>';
+            var aDirB   = at.direction === 'LONG' ? '<span class="badge badge-long">LONG</span>' : '<span class="badge badge-short">SHORT</span>';
+            var chartLink = at.chart && at.chart !== '#' ? '<a href="' + at.chart + '" target="_blank" rel="noopener" class="chart-icon"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>' : '<span style="color:var(--sub)">-</span>';
+            var confParts = [];
+            if (at.confirmSeq && at.confirmSeq.length) {
+                for (var ci = 0; ci < at.confirmSeq.length; ci++) confParts.push((ci + 1) + '.' + at.confirmSeq[ci]);
+            }
+            var confTitle = confParts.length ? confParts.join(' → ') : 'Qeyd yoxdur';
+            if (at.entryTF) confTitle += '  |  Entry: ' + at.entryTF;
+            if (at.tsMb) confTitle += '  |  TS+MB ✓';
+            var confShort = confParts.length ? confParts.join('→') : '-';
+            allHtml += '<tr>' +
+                '<td>' + at.date + '</td>' +
+                '<td style="font-weight:700;color:white">' + at.pair + '</td>' +
+                '<td style="color:var(--sub)">' + (at.account || 'Lucid 50K') + '</td>' +
+                '<td>' + aDirB + '</td>' +
+                '<td><span class="trunc" title="' + at.model + '">' + at.model + '</span></td>' +
+                '<td><span class="trunc" style="color:var(--purple-soft)" title="' + confTitle + '">' + confShort + '</span></td>' +
+                '<td style="font-weight:700;' + aColor + '">' + aSign + at.pl.toFixed(2) + '</td>' +
+                '<td style="color:var(--purple-soft);font-weight:700">' + at.rr + 'R</td>' +
+                '<td>' + aBadge + '</td>' +
+                '<td style="color:var(--sub)">Ö:' + at.psyBefore + ' | S:' + at.psyAfter + '</td>' +
+                '<td style="text-align:center">' + chartLink + '</td>' +
+                '<td style="text-align:right;white-space:nowrap">' +
+                    '<button class="edit-btn" onclick="editTrade(' + at.id + ')" title="Düzəliş et"><i class="fa-solid fa-pen-to-square"></i></button>' +
+                    '<button class="del-btn" onclick="deleteTrade(' + at.id + ')" title="Sil"><i class="fa-regular fa-trash-can"></i></button>' +
+                '</td>' +
+                '</tr>';
+        }
+        document.getElementById('all-trades-body').innerHTML = allHtml || '<tr class="empty-row"><td colspan="12">Hələ ki, əməliyyat daxil edilməyib.</td></tr>';
+    }
+
+    // === FILE STORE ===
+    // Documents are far too large for localStorage (~5MB total), so blobs go
+    // into IndexedDB. localStorage is kept only as a small fallback for
+    // environments where IndexedDB is unavailable (e.g. some file:// setups).
+    var FDB = 'inversion_files', FSTORE = 'blobs';
+    var fdb = null, fsMode = 'pending';
+    var MAX_MB_IDB = 20, MAX_MB_LS = 1;
+    var pendingFiles = [];      // staged in the add form, not yet saved
+    var attachTargetId = null;  // lesson receiving files from the row button
+
+    function fsInit() {
+        return new Promise(function(resolve) {
+            if (!window.indexedDB) { fsMode = 'ls'; resolve(); return; }
+            var req;
+            try { req = indexedDB.open(FDB, 1); }
+            catch (e) { fsMode = 'ls'; resolve(); return; }
+            req.onupgradeneeded = function() {
+                var d = req.result;
+                if (!d.objectStoreNames.contains(FSTORE)) d.createObjectStore(FSTORE);
+            };
+            req.onsuccess = function() { fdb = req.result; fsMode = 'idb'; resolve(); };
+            req.onerror   = function() { fsMode = 'ls'; resolve(); };
+            req.onblocked = function() { fsMode = 'ls'; resolve(); };
+            setTimeout(function() { if (fsMode === 'pending') { fsMode = 'ls'; resolve(); } }, 2500);
+        });
+    }
+
+    function fsPut(id, dataUrl) {
+        if (fsMode === 'idb' && fdb) {
+            return new Promise(function(res, rej) {
+                var tx = fdb.transaction(FSTORE, 'readwrite');
+                tx.objectStore(FSTORE).put(dataUrl, id);
+                tx.oncomplete = function() { res(); };
+                tx.onerror    = function() { rej(tx.error); };
+                tx.onabort    = function() { rej(tx.error); };
+            });
+        }
+        return new Promise(function(res, rej) {
+            try { localStorage.setItem('invfile_' + id, dataUrl); res(); }
+            catch (e) { rej(e); }
+        });
+    }
+
+    function fsGet(id) {
+        if (fsMode === 'idb' && fdb) {
+            return new Promise(function(res, rej) {
+                var tx = fdb.transaction(FSTORE, 'readonly');
+                var r  = tx.objectStore(FSTORE).get(id);
+                r.onsuccess = function() { res(r.result || null); };
+                r.onerror   = function() { rej(r.error); };
+            });
+        }
+        return Promise.resolve(localStorage.getItem('invfile_' + id));
+    }
+
+    function fsDel(id) {
+        if (fsMode === 'idb' && fdb) {
+            return new Promise(function(res) {
+                var tx = fdb.transaction(FSTORE, 'readwrite');
+                tx.objectStore(FSTORE).delete(id);
+                tx.oncomplete = function() { res(); };
+                tx.onerror    = function() { res(); };
+            });
+        }
+        try { localStorage.removeItem('invfile_' + id); } catch (e) {}
+        return Promise.resolve();
+    }
+
+    function fmtSize(b) {
+        if (b == null) return '';
+        if (b < 1024) return b + ' B';
+        if (b < 1048576) return (b / 1024).toFixed(0) + ' KB';
+        return (b / 1048576).toFixed(1) + ' MB';
+    }
+
+    function fileIcon(name, type) {
+        var e = String(name || '').split('.').pop().toLowerCase();
+        if (e === 'pdf') return ['fa-file-pdf', 'fc-pdf'];
+        if (['doc','docx','rtf','odt'].indexOf(e) !== -1)  return ['fa-file-word', 'fc-word'];
+        if (['xls','xlsx','csv','ods'].indexOf(e) !== -1)  return ['fa-file-excel', 'fc-excel'];
+        if (['ppt','pptx','odp'].indexOf(e) !== -1)        return ['fa-file-powerpoint', 'fc-ppt'];
+        if (['png','jpg','jpeg','gif','webp','svg','bmp'].indexOf(e) !== -1) return ['fa-file-image', 'fc-img'];
+        if (['zip','rar','7z','tar','gz'].indexOf(e) !== -1) return ['fa-file-zipper', 'fc-zip'];
+        if (['txt','md','log'].indexOf(e) !== -1)          return ['fa-file-lines', 'fc-txt'];
+        if (['mp4','mov','avi','mkv'].indexOf(e) !== -1)   return ['fa-file-video', 'fc-other'];
+        if (['mp3','wav','m4a'].indexOf(e) !== -1)         return ['fa-file-audio', 'fc-other'];
+        return ['fa-file', 'fc-other'];
+    }
+
+    function dataUrlToBlob(d) {
+        var parts = String(d).split(',');
+        var mime  = (parts[0].match(/:(.*?);/) || [])[1] || 'application/octet-stream';
+        var bin   = atob(parts[1] || '');
+        var arr   = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+        return new Blob([arr], { type: mime });
+    }
+
+    function readAsDataUrl(file) {
+        return new Promise(function(res, rej) {
+            var fr = new FileReader();
+            fr.onload  = function() { res(fr.result); };
+            fr.onerror = function() { rej(fr.error); };
+            fr.readAsDataURL(file);
+        });
+    }
+
+    function maxMb() { return fsMode === 'idb' ? MAX_MB_IDB : MAX_MB_LS; }
+
+    function updateStoreNote() {
+        var el = document.getElementById('les-store-note');
+        if (!el) return;
+        var total = 0, n = 0;
+        for (var i = 0; i < lessons.length; i++) {
+            var fl = lessons[i].files || [];
+            for (var j = 0; j < fl.length; j++) { total += (fl[j].size || 0); n++; }
+        }
+        var mode = fsMode === 'idb' ? 'IndexedDB' : 'localStorage (məhdud)';
+        el.innerText = n + ' fayl · ' + fmtSize(total) + ' · anbar: ' + mode
+                     + ' · fayl limiti ' + maxMb() + ' MB';
+    }
+
+    // === STAGING (add form) ===
+    window.stageFiles = function(fileList) {
+        if (!fileList || !fileList.length) return;
+        var lim = maxMb() * 1048576, rejected = [];
+        var jobs = [];
+        for (var i = 0; i < fileList.length; i++) {
+            var f = fileList[i];
+            if (f.size > lim) { rejected.push(f.name + ' (' + fmtSize(f.size) + ')'); continue; }
+            jobs.push(f);
+        }
+        if (rejected.length) {
+            alert('Bu fayllar çox böyükdür (limit ' + maxMb() + ' MB):\n' + rejected.join('\n'));
+        }
+        if (!jobs.length) { document.getElementById('les-file').value = ''; return; }
+
+        var done = 0;
+        for (var k = 0; k < jobs.length; k++) {
+            (function(file) {
+                readAsDataUrl(file).then(function(url) {
+                    pendingFiles.push({
+                        id:   'f' + Date.now() + '_' + Math.random().toString(36).slice(2, 8),
+                        name: file.name, size: file.size, type: file.type || '', data: url
+                    });
+                    done++;
+                    if (done === jobs.length) { renderStaged(); document.getElementById('les-file').value = ''; }
+                })['catch'](function() {
+                    done++;
+                    alert('Fayl oxunmadı: ' + file.name);
+                    if (done === jobs.length) { renderStaged(); document.getElementById('les-file').value = ''; }
+                });
+            })(jobs[k]);
+        }
+    };
+
+    window.unstageFile = function(id) {
+        pendingFiles = pendingFiles.filter(function(f) { return f.id !== id; });
+        renderStaged();
+    };
+
+    function chipHtml(f, onOpen, onRemove) {
+        var ic = fileIcon(f.name, f.type);
+        return '<span class="file-chip">' +
+            '<i class="fa-solid ' + ic[0] + ' fc-ico ' + ic[1] + '"></i>' +
+            '<span class="fc-name" title="' + esc(f.name) + '" onclick="' + onOpen + '">' + esc(f.name) + '</span>' +
+            '<span class="fc-size">' + fmtSize(f.size) + '</span>' +
+            '<button class="fc-x" onclick="' + onRemove + '" aria-label="Sil"><i class="fa-solid fa-xmark"></i></button>' +
+        '</span>';
+    }
+
+    function renderStaged() {
+        var host = document.getElementById('les-staged');
+        if (!host) return;
+        var html = '';
+        for (var i = 0; i < pendingFiles.length; i++) {
+            var f = pendingFiles[i];
+            html += chipHtml(f, "openStaged('" + f.id + "')", "unstageFile('" + f.id + "')");
+        }
+        host.innerHTML = html;
+        updateStoreNote();
+    }
+
+    window.openStaged = function(id) {
+        for (var i = 0; i < pendingFiles.length; i++) {
+            if (pendingFiles[i].id === id) { deliver(pendingFiles[i].data, pendingFiles[i].name); return; }
+        }
+    };
+
+    // === OPEN / DOWNLOAD ===
+    var INLINE = ['pdf','png','jpg','jpeg','gif','webp','svg','txt','md','mp4','mp3'];
+    function deliver(dataUrl, name) {
+        if (!dataUrl) { alert('Fayl tapılmadı.'); return; }
+        var blob = dataUrlToBlob(dataUrl);
+        var url  = URL.createObjectURL(blob);
+        var ext  = String(name).split('.').pop().toLowerCase();
+        if (INLINE.indexOf(ext) !== -1) {
+            window.open(url, '_blank');
+        } else {
+            var a = document.createElement('a');
+            a.href = url; a.download = name;
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        }
+        setTimeout(function() { URL.revokeObjectURL(url); }, 60000);
+    }
+
+    window.openLessonFile = function(fid) {
+        var name = 'file';
+        for (var i = 0; i < lessons.length; i++) {
+            var fl = lessons[i].files || [];
+            for (var j = 0; j < fl.length; j++) if (fl[j].id === fid) { name = fl[j].name; }
+        }
+        fsGet(fid).then(function(d) { deliver(d, name); })['catch'](function() { alert('Fayl açıla bilmədi.'); });
+    };
+
+    // === ATTACH TO AN EXISTING LESSON ===
+    window.pickFilesFor = function(lessonId) {
+        attachTargetId = lessonId;
+        document.getElementById('les-file-existing').click();
+    };
+
+    window.attachToLesson = function(fileList) {
+        var input = document.getElementById('les-file-existing');
+        if (!fileList || !fileList.length || attachTargetId == null) { input.value = ''; return; }
+        var target = null;
+        for (var i = 0; i < lessons.length; i++) if (lessons[i].id === attachTargetId) target = lessons[i];
+        if (!target) { input.value = ''; return; }
+        if (!target.files) target.files = [];
+
+        var lim = maxMb() * 1048576, jobs = [], rejected = [];
+        for (var j = 0; j < fileList.length; j++) {
+            if (fileList[j].size > lim) rejected.push(fileList[j].name); else jobs.push(fileList[j]);
+        }
+        if (rejected.length) alert('Çox böyük (limit ' + maxMb() + ' MB):\n' + rejected.join('\n'));
+        if (!jobs.length) { input.value = ''; return; }
+
+        var done = 0;
+        for (var k = 0; k < jobs.length; k++) {
+            (function(file) {
+                readAsDataUrl(file).then(function(url) {
+                    var fid = 'f' + Date.now() + '_' + Math.random().toString(36).slice(2, 8);
+                    return fsPut(fid, url).then(function() {
+                        target.files.push({ id: fid, name: file.name, size: file.size, type: file.type || '' });
+                    });
+                })['catch'](function(e) {
+                    alert('Saxlanmadı: ' + file.name + '\n' + (e && e.name === 'QuotaExceededError'
+                        ? 'Anbar doludur.' : 'Fayl çox böyük ola bilər.'));
+                }).then(function() {
+                    done++;
+                    if (done === jobs.length) { persistLessons(); renderLessons(); input.value = ''; }
+                });
+            })(jobs[k]);
+        }
+    };
+
+    window.removeLessonFile = function(lessonId, fid) {
+        if (!confirm('Bu faylı silmək istəyirsiniz?')) return;
+        for (var i = 0; i < lessons.length; i++) {
+            if (lessons[i].id === lessonId && lessons[i].files) {
+                lessons[i].files = lessons[i].files.filter(function(f) { return f.id !== fid; });
+                break;
+            }
+        }
+        fsDel(fid).then(function() { persistLessons(); renderLessons(); });
+    };
+
+    // === LESSONS (study library, standalone) ===
+    function persistLessons() {
+        try { localStorage.setItem(LESSON_KEY, JSON.stringify(lessons)); } catch(e) {}
+    }
+
+    function esc(str) {
+        return String(str == null ? '' : str)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    function safeUrl(u) {
+        u = String(u || '').trim();
+        if (!u) return '';
+        if (/^https?:\/\//i.test(u)) return u;
+        // any other scheme (javascript:, data:, ...) is rejected outright
+        if (/^[a-z][a-z0-9+.\-]*:/i.test(u)) return '';
+        // bare domain pasted without a scheme -> assume https
+        if (/^[\w.-]+\.[a-z]{2,}/i.test(u)) return 'https://' + u;
+        return '';
+    }
+
+    window.addLesson = function() {
+        var titleEl = document.getElementById('les-title');
+        var title   = titleEl.value.trim();
+        if (!title) { alert('Zəhmət olmasa dərsin adını daxil edin!'); titleEl.focus(); return; }
+        var lesson = {
+            id:    Date.now(),
+            title: title,
+            cat:   document.getElementById('les-cat').value,
+            link:  document.getElementById('les-link').value.trim(),
+            note:  document.getElementById('les-note').value.trim(),
+            done:  false,
+            added: new Date().toISOString().slice(0, 10),
+            doneAt: '',
+            files: []
+        };
+
+        var staged = pendingFiles.slice();
+        var writes = [];
+        for (var i = 0; i < staged.length; i++) {
+            (function(f) {
+                writes.push(
+                    fsPut(f.id, f.data).then(function() {
+                        lesson.files.push({ id: f.id, name: f.name, size: f.size, type: f.type });
+                    })['catch'](function(e) {
+                        alert('Fayl saxlanmadı: ' + f.name + '\n' +
+                              (e && e.name === 'QuotaExceededError' ? 'Anbar doludur.' : 'Yaddaş xətası.'));
+                    })
+                );
+            })(staged[i]);
+        }
+
+        Promise.all(writes).then(function() {
+            lessons.push(lesson);
+            persistLessons();
+            pendingFiles = [];
+            titleEl.value = '';
+            document.getElementById('les-link').value = '';
+            document.getElementById('les-note').value = '';
+            renderStaged();
+            renderLessons();
+            titleEl.focus();
+        });
+    };
+
+    window.toggleLesson = function(id) {
+        for (var i = 0; i < lessons.length; i++) {
+            if (lessons[i].id === id) {
+                lessons[i].done   = !lessons[i].done;
+                lessons[i].doneAt = lessons[i].done ? new Date().toISOString().slice(0, 10) : '';
+                break;
+            }
+        }
+        persistLessons();
+        renderLessons();
+    };
+
+    window.deleteLesson = function(id) {
+        if (!confirm('Bu dərsi silmək istədiyinizə əminsiniz?')) return;
+        var victim = null;
+        for (var i = 0; i < lessons.length; i++) if (lessons[i].id === id) victim = lessons[i];
+        var dels = [];
+        if (victim && victim.files) {
+            for (var j = 0; j < victim.files.length; j++) dels.push(fsDel(victim.files[j].id));
+        }
+        lessons = lessons.filter(function(l) { return l.id !== id; });
+        Promise.all(dels).then(function() { persistLessons(); renderLessons(); });
+    };
+
+    window.clearLessons = function() {
+        if (!lessons.length) return;
+        if (!confirm('Bütün dərsləri (və əlavə olunmuş faylları) silmək istəyirsiniz?')) return;
+        var dels = [];
+        for (var i = 0; i < lessons.length; i++) {
+            var fl = lessons[i].files || [];
+            for (var j = 0; j < fl.length; j++) dels.push(fsDel(fl[j].id));
+        }
+        lessons = [];
+        Promise.all(dels).then(function() { persistLessons(); renderLessons(); });
+    };
+
+    window.setLessonFilter = function(f) {
+        lessonFilter = f;
+        var btns = document.querySelectorAll('#les-filters .lf-btn');
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].className = (btns[i].getAttribute('data-f') === f) ? 'lf-btn active' : 'lf-btn';
+        }
+        renderLessons();
+    };
+
+    function renderLessons() {
+        var total = lessons.length, done = 0;
+        for (var i = 0; i < lessons.length; i++) if (lessons[i].done) done++;
+        var pct = total > 0 ? Math.round(done / total * 100) : 0;
+
+        document.getElementById('les-prog-txt').innerHTML = done + ' / ' + total + ' &middot; ' + pct + '%';
+        document.getElementById('les-prog-fill').style.width = pct + '%';
+
+        // not-done first, then newest first
+        var view = lessons.slice().filter(function(l) {
+            return lessonFilter === 'all' || (lessonFilter === 'done' ? l.done : !l.done);
+        }).sort(function(a, b) {
+            if (a.done !== b.done) return a.done ? 1 : -1;
+            return b.id - a.id;
+        });
+
+        updateStoreNote();
+
+        var host = document.getElementById('lesson-list');
+        if (!view.length) {
+            host.innerHTML = '<div class="lesson-empty">' +
+                (total === 0 ? 'Hələ dərs əlavə edilməyib.' : 'Bu filtrə uyğun dərs yoxdur.') + '</div>';
+            return;
+        }
+
+        var html = '';
+        for (var j = 0; j < view.length; j++) {
+            var l    = view[j];
+            var url  = safeUrl(l.link);
+            var meta = '<span class="lesson-cat">' + esc(l.cat || 'Digər') + '</span>';
+            if (url) meta += '<a class="lesson-link" href="' + esc(url) + '" target="_blank" rel="noopener">' +
+                             '<i class="fa-solid fa-arrow-up-right-from-square"></i> Link</a>';
+            meta += '<span>' + esc(l.added || '') + '</span>';
+            if (l.done && l.doneAt) meta += '<span style="color:var(--green)">✓ ' + esc(l.doneAt) + '</span>';
+
+            var fl = l.files || [];
+            var chips = '';
+            for (var fi = 0; fi < fl.length; fi++) {
+                chips += chipHtml(fl[fi],
+                    "openLessonFile('" + fl[fi].id + "')",
+                    "removeLessonFile(" + l.id + ", '" + fl[fi].id + "')");
+            }
+            chips += '<button class="lesson-addfile" onclick="pickFilesFor(' + l.id + ')">' +
+                     '<i class="fa-solid fa-paperclip" style="margin-right:4px;"></i>Fayl əlavə et</button>';
+
+            html += '<div class="lesson-row' + (l.done ? ' done' : '') + '">' +
+                '<button class="lesson-check' + (l.done ? ' on' : '') + '" onclick="toggleLesson(' + l.id + ')" ' +
+                    'aria-label="Tamamlandı"><i class="fa-solid fa-check"></i></button>' +
+                '<div class="lesson-main">' +
+                    '<div class="lesson-title">' + esc(l.title) + '</div>' +
+                    '<div class="lesson-meta">' + meta + '</div>' +
+                    (l.note ? '<div class="lesson-note">' + esc(l.note) + '</div>' : '') +
+                    '<div class="file-chips">' + chips + '</div>' +
+                '</div>' +
+                '<button class="lesson-del" onclick="deleteLesson(' + l.id + ')" aria-label="Sil">' +
+                    '<i class="fa-regular fa-trash-can"></i></button>' +
+            '</div>';
+        }
+        host.innerHTML = html;
+    }
+
+    // === BACKUP / RESTORE ===
+    // Trades and lessons live in localStorage, attachments in IndexedDB —
+    // both are per-browser. A backup file is the only way to move a journal
+    // between a PC and a phone, or to a new browser.
+    window.exportBackup = function() {
+        var ids = [];
+        for (var i = 0; i < lessons.length; i++) {
+            var fl = lessons[i].files || [];
+            for (var j = 0; j < fl.length; j++) ids.push(fl[j].id);
+        }
+        var reads = ids.map(function(id) {
+            return fsGet(id).then(function(d) { return { id: id, data: d }; })
+                            ['catch'](function() { return { id: id, data: null }; });
+        });
+        Promise.all(reads).then(function(files) {
+            var payload = {
+                app: 'inversion-journal', version: 1,
+                exportedAt: new Date().toISOString(),
+                trades: db, lessons: lessons,
+                files: files.filter(function(f) { return f.data; })
+            };
+            var json = JSON.stringify(payload);
+            var blob = new Blob([json], { type: 'application/json' });
+            var url  = URL.createObjectURL(blob);
+            var a    = document.createElement('a');
+            a.href = url;
+            a.download = 'inversion-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+            document.body.appendChild(a); a.click(); document.body.removeChild(a);
+            setTimeout(function() { URL.revokeObjectURL(url); }, 30000);
+            alert('Backup hazırdır.\n' + db.length + ' trade · ' + lessons.length + ' dərs · '
+                  + payload.files.length + ' fayl · ' + fmtSize(json.length));
+        });
+    };
+
+    window.importBackup = function(input) {
+        var f = input.files && input.files[0];
+        if (!f) return;
+        var fr = new FileReader();
+        fr.onload = function() {
+            var payload;
+            try { payload = JSON.parse(fr.result); }
+            catch (e) { alert('Fayl oxunmadı — düzgün backup faylı deyil.'); input.value = ''; return; }
+
+            if (!payload || payload.app !== 'inversion-journal') {
+                alert('Bu fayl Inversion backup faylı deyil.'); input.value = ''; return;
+            }
+            var nt = (payload.trades  || []).length;
+            var nl = (payload.lessons || []).length;
+            var nf = (payload.files   || []).length;
+            if (!confirm('Bərpa edilsin?\n\n' + nt + ' trade · ' + nl + ' dərs · ' + nf + ' fayl\n\n'
+                       + 'DİQQƏT: mövcud bütün məlumatlar əvəz olunacaq.')) { input.value = ''; return; }
+
+            db      = payload.trades  || [];
+            lessons = payload.lessons || [];
+            var writes = (payload.files || []).map(function(fl) {
+                return fsPut(fl.id, fl.data)['catch'](function() {});
+            });
+            Promise.all(writes).then(function() {
+                persist();
+                persistLessons();
+                resetTradeForm();
+                renderAll();
+                renderLessons();
+                input.value = '';
+                alert('Bərpa tamamlandı.');
+                switchTab('dashboard');
+            });
+        };
+        fr.onerror = function() { alert('Fayl oxunmadı.'); input.value = ''; };
+        fr.readAsText(f);
+    };
+
+    // === CALENDAR ===
+    window.changeMonth = function(dir) {
+        calDate.setMonth(calDate.getMonth() + dir);
+        renderCalendar();
+    };
+
+    window.renderCalendar = function() {
+        var y = calDate.getFullYear(), m = calDate.getMonth();
+        document.getElementById('cal-month-label').innerText = MONTHS[m] + ' ' + y;
+        var days = {};
+        for (var i = 0; i < db.length; i++) {
+            var t  = db[i];
+            var parts = t.date.split('-');
+            if (parts.length === 3 && parseInt(parts[0]) === y && (parseInt(parts[1])-1) === m) {
+                var d = parseInt(parts[2]);
+                days[d] = (days[d] || 0) + t.pl;
+            }
+        }
+        var grid = document.getElementById('cal-grid');
+        grid.innerHTML = '';
+        var startDay = new Date(y, m, 1).getDay();
+        var shift    = startDay === 0 ? 6 : startDay - 1;
+        var total    = new Date(y, m+1, 0).getDate();
+        for (var s = 0; s < shift; s++) {
+            var empty = document.createElement('div');
+            empty.className = 'cal-cell empty';
+            grid.appendChild(empty);
+        }
+        for (var di = 1; di <= total; di++) {
+            var cell = document.createElement('div');
+            var cls  = 'cal-cell';
+            if (days[di] !== undefined) cls += days[di] >= 0 ? ' win-day' : ' loss-day';
+            cell.className = cls;
+            var numEl = document.createElement('span');
+            numEl.className = 'cal-cell-num';
+            numEl.innerText = di;
+            cell.appendChild(numEl);
+            if (days[di] !== undefined) {
+                var plEl2 = document.createElement('span');
+                plEl2.className = 'cal-cell-pl';
+                plEl2.style.color = days[di] >= 0 ? 'var(--green)' : 'var(--red)';
+                plEl2.innerText = (days[di] >= 0 ? '+' : '') + days[di].toFixed(0) + '$';
+                cell.appendChild(plEl2);
+            }
+            grid.appendChild(cell);
+        }
+    };
+
+    // === BOOT ===
+    (function() {
+        var dz = document.getElementById('les-drop');
+        if (!dz) return;
+        ['dragenter','dragover'].forEach(function(ev) {
+            dz.addEventListener(ev, function(e) { e.preventDefault(); dz.classList.add('over'); });
+        });
+        ['dragleave','drop'].forEach(function(ev) {
+            dz.addEventListener(ev, function(e) { e.preventDefault(); dz.classList.remove('over'); });
+        });
+        dz.addEventListener('drop', function(e) {
+            if (e.dataTransfer && e.dataTransfer.files) stageFiles(e.dataTransfer.files);
+        });
+    })();
+
+    buildModelGrid();
+    buildEntryTFGrid();
+    renderConfirmGrid();
+    fsInit().then(function() {
+        renderStaged();
+        renderLessons();
+    });
+    renderAll();
+
+}());
+</script>
+</body>
+</html>
