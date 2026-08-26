@@ -1,0 +1,105 @@
+{
+ "app": "inversion-journal",
+ "version": 1,
+ "updatedAt": "2026-08-26T12:12:45.358Z",
+ "trades": [
+  {
+   "id": 1787741123956,
+   "date": "2026-08-25",
+   "pair": "NQ",
+   "account": "Real hesab",
+   "direction": "LONG",
+   "pl": 150,
+   "rr": 1,
+   "fees": 0,
+   "setup": "A+ Setup",
+   "model": "1H Key Level + CRT + 15M CRT + TS + 1M Entry",
+   "psyBefore": "Güvənli",
+   "psyAfter": "Mükəmməl",
+   "chart": "https://www.tradingview.com/x/VQDB07Wc/",
+   "notes": "",
+   "confirmSeq": [
+    "1H Key Level",
+    "1H CRT",
+    "15M CRT",
+    "TS + Mitigation Block"
+   ],
+   "entryTF": "1M",
+   "tsMb": false
+  }
+ ],
+ "lessons": [
+  {
+   "id": 1787742351286,
+   "title": "CRT, key leveldən reaksiya və giriş modeli",
+   "cat": "CRT",
+   "link": "",
+   "note": "Key levellər OB, FVG, və ya ERL-dir. Ordan qiymət reaksiya alır, CRT low və ya high təmizləyir, daha sonra 3M-də TS gördükdə işləm alınır və CRT yuxarı və ya aşağısına qədər işləm tutulur.",
+   "done": false,
+   "added": "2026-08-26",
+   "doneAt": "",
+   "files": [
+    {
+     "id": "f1787742161771_8ng3jo",
+     "name": "CRT.pdf",
+     "size": 211763,
+     "type": "application/pdf"
+    }
+   ]
+  },
+  {
+   "id": 1787742449815,
+   "title": "SMTF nümunə",
+   "cat": "Digər",
+   "link": "",
+   "note": "SMTF-in formaları əlavədəki şəkildədir",
+   "done": false,
+   "added": "2026-08-26",
+   "doneAt": "",
+   "files": [
+    {
+     "id": "f1787742448296_v3q370",
+     "name": "photo_5443046384354399828_y.jpg",
+     "size": 62315,
+     "type": "image/jpeg"
+    }
+   ]
+  },
+  {
+   "id": 1787742513411,
+   "title": "Qızıl 4H+1H AMD model",
+   "cat": "CRT",
+   "link": "",
+   "note": "",
+   "done": false,
+   "added": "2026-08-26",
+   "doneAt": "",
+   "files": [
+    {
+     "id": "f1787742510028_3m4ypd",
+     "name": "tapsiriq 7.24.2026.pdf",
+     "size": 423604,
+     "type": "application/pdf"
+    }
+   ]
+  },
+  {
+   "id": 1787742622266,
+   "title": "4H CRT + 1H SD Qızıl entry",
+   "cat": "Digər",
+   "link": "",
+   "note": "",
+   "done": false,
+   "added": "2026-08-26",
+   "doneAt": "",
+   "files": [
+    {
+     "id": "f1787742619808_jjs2u0",
+     "name": "CRT+SD+entry (1).pdf",
+     "size": 1254165,
+     "type": "application/pdf"
+    }
+   ]
+  }
+ ]
+}
