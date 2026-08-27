@@ -1,7 +1,7 @@
 {
  "app": "inversion-journal",
  "version": 1,
- "updatedAt": "2026-08-27T04:42:12.861Z",
+ "updatedAt": "2026-08-27T04:43:16.687Z",
  "trades": [
   {
    "id": 1787741123956,
@@ -41,7 +41,7 @@
    "psyBefore": "Ehtiyatlı",
    "psyAfter": "Qane edici",
    "chart": "https://www.tradingview.com/x/gcO28nXa/",
-   "notes": "",
+   "notes": "1H-da key level ERL idi. Qiymət qalxdı bütün ERL-ləri təmizlədi.CRT təsdiqi də var idi həm 1H həm də 15M-də.Daha sonra 1M-də qiymət FVG-dən qalxıb yeni high çıxara bilmədikdə MB-dən giriş olundu. Daha sonra qiymət bir daha qalxdı 10am açılışında high bir daha təmizlədi, yenə eyni təsdiqlə işləmi saxladıq. 7R-lıq işləm olmasına rəğmən 2R-da çıxdıq.",
    "confirmSeq": [
     "1H Key Level",
     "1H CRT",
