@@ -1,7 +1,7 @@
 {
  "app": "inversion-journal",
  "version": 1,
- "updatedAt": "2026-08-31T13:34:05.117Z",
+ "updatedAt": "2026-09-01T14:04:46.649Z",
  "trades": [
   {
    "id": 1787741123956,
@@ -69,6 +69,29 @@
    "confirmSeq": [
     "1H Key Level",
     "1H CRT",
+    "15M CRT",
+    "TS + Mitigation Block"
+   ],
+   "entryTF": "1M",
+   "tsMb": false
+  },
+  {
+   "id": 1788271484140,
+   "date": "2026-09-01",
+   "pair": "NQ",
+   "account": "FundedNext futures",
+   "direction": "LONG",
+   "pl": 228,
+   "rr": 1.5,
+   "fees": 0,
+   "setup": "A Setup",
+   "model": "1H Key Level + CRT + 15M CRT + TS + 1M Entry",
+   "psyBefore": "Sakit",
+   "psyAfter": "Nötr",
+   "chart": "https://www.tradingview.com/x/EiKTdm1w/",
+   "notes": "",
+   "confirmSeq": [
+    "1H Key Level",
     "15M CRT",
     "TS + Mitigation Block"
    ],
