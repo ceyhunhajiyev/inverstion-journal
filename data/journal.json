@@ -1,7 +1,7 @@
 {
  "app": "inversion-journal",
  "version": 1,
- "updatedAt": "2026-09-02T14:14:16.026Z",
+ "updatedAt": "2026-09-03T14:54:55.327Z",
  "trades": [
   {
    "id": 1787741123956,
@@ -118,6 +118,27 @@
     "1H CRT",
     "15M CRT",
     "TS + Mitigation Block"
+   ],
+   "entryTF": "1M",
+   "tsMb": false
+  },
+  {
+   "id": 1788447292825,
+   "date": "2026-09-03",
+   "pair": "NQ",
+   "account": "FundedNext Futures",
+   "direction": "LONG",
+   "pl": 212,
+   "rr": 3,
+   "fees": 0,
+   "setup": "A Setup",
+   "model": "1H-da Dow Jones SMTF etdi, 1M-de SMT yarandi",
+   "psyBefore": "Sakit",
+   "psyAfter": "Qane edici",
+   "chart": "https://www.tradingview.com/x/qo6wyjFf/",
+   "notes": "",
+   "confirmSeq": [
+    "1H Key Level"
    ],
    "entryTF": "1M",
    "tsMb": false
