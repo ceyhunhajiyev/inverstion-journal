@@ -1,7 +1,7 @@
 {
  "app": "inversion-journal",
  "version": 1,
- "updatedAt": "2026-09-08T06:00:46.199Z",
+ "updatedAt": "2026-09-08T13:38:56.406Z",
  "trades": [
   {
    "id": 1787741123956,
@@ -158,6 +158,30 @@
    "psyAfter": "Nötr",
    "chart": "https://www.tradingview.com/x/T5c0sh7x/",
    "notes": "Bank holiday oldugu ucun guman ki price action biraz tez girmeye mecbur etdi. \n\nBir defe stop olduqdan sonra, biraz gec olsa da ikinci girisi edib ziyani azaltdim",
+   "confirmSeq": [
+    "1H Key Level",
+    "1H CRT",
+    "15M CRT",
+    "TS + Mitigation Block"
+   ],
+   "entryTF": "1M",
+   "tsMb": false
+  },
+  {
+   "id": 1788874733896,
+   "date": "2026-09-08",
+   "pair": "NQ",
+   "account": "FundedNext Futures",
+   "direction": "SHORT",
+   "pl": 462,
+   "rr": 2,
+   "fees": 0,
+   "setup": "A+ Setup",
+   "model": "1H Key Level + CRT + 15M CRT + TS + 1M Entry",
+   "psyBefore": "Ehtiyatlı",
+   "psyAfter": "Qane edici",
+   "chart": "https://www.tradingview.com/x/aTLTiGI4/",
+   "notes": "",
    "confirmSeq": [
     "1H Key Level",
     "1H CRT",
