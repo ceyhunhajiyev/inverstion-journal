@@ -1,7 +1,7 @@
 {
  "app": "inversion-journal",
  "version": 1,
- "updatedAt": "2026-09-08T13:38:56.406Z",
+ "updatedAt": "2026-09-09T15:22:45.563Z",
  "trades": [
   {
    "id": 1787741123956,
@@ -186,6 +186,30 @@
     "1H Key Level",
     "1H CRT",
     "15M CRT",
+    "TS + Mitigation Block"
+   ],
+   "entryTF": "1M",
+   "tsMb": false
+  },
+  {
+   "id": 1788967363061,
+   "date": "2026-09-09",
+   "pair": "NQ",
+   "account": "FundedNext Futures",
+   "direction": "SHORT",
+   "pl": 180,
+   "rr": 0.5,
+   "fees": 0,
+   "setup": "A Setup",
+   "model": "1H Key Level + CRT + 15M CRT + TS + 1M Entry",
+   "psyBefore": "Sakit",
+   "psyAfter": "Nötr",
+   "chart": "#",
+   "notes": "Cox pis yerden qaytardiq",
+   "confirmSeq": [
+    "1H Key Level",
+    "15M CRT",
+    "1H CRT",
     "TS + Mitigation Block"
    ],
    "entryTF": "1M",
