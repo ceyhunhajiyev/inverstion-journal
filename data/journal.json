@@ -1,7 +1,7 @@
 {
  "app": "inversion-journal",
  "version": 1,
- "updatedAt": "2026-09-09T15:22:45.563Z",
+ "updatedAt": "2026-09-13T17:55:00.927Z",
  "trades": [
   {
    "id": 1787741123956,
@@ -212,6 +212,25 @@
     "1H CRT",
     "TS + Mitigation Block"
    ],
+   "entryTF": "1M",
+   "tsMb": false
+  },
+  {
+   "id": 1789322098424,
+   "date": "2026-09-11",
+   "pair": "NQ",
+   "account": "FundedNexr Futures",
+   "direction": "SHORT",
+   "pl": 249,
+   "rr": 1,
+   "fees": 0,
+   "setup": "B Setup",
+   "model": "1H Key Level + CRT + 15M CRT + TS + 1M Entry",
+   "psyBefore": "Riskli",
+   "psyAfter": "Nötr",
+   "chart": "#",
+   "notes": "",
+   "confirmSeq": [],
    "entryTF": "1M",
    "tsMb": false
   }
