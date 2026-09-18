@@ -1,7 +1,7 @@
 {
  "app": "inversion-journal",
  "version": 1,
- "updatedAt": "2026-09-15T08:03:06.667Z",
+ "updatedAt": "2026-09-18T09:36:32.540Z",
  "trades": [
   {
    "id": 1787741123956,
@@ -250,6 +250,29 @@
    "chart": "https://www.tradingview.com/x/ddmRRTtY/",
    "notes": "",
    "confirmSeq": [
+    "1H CRT",
+    "SMTF"
+   ],
+   "entryTF": "3M",
+   "tsMb": false
+  },
+  {
+   "id": 1789724189963,
+   "date": "2026-09-16",
+   "pair": "XAUUSD",
+   "account": "FundedNext Futures",
+   "direction": "SHORT",
+   "pl": 300,
+   "rr": 2,
+   "fees": 0,
+   "setup": "A+ Setup",
+   "model": "4H CRT + Key Level + SD (1H)",
+   "psyBefore": "Riskli",
+   "psyAfter": "Qane edici",
+   "chart": "https://www.tradingview.com/x/2ia5UMED/",
+   "notes": "",
+   "confirmSeq": [
+    "4H CRT",
     "1H CRT",
     "SMTF"
    ],
